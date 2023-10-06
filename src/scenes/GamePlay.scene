@@ -1,0 +1,120 @@
+{
+    "id": "ad876045-b7ad-4549-a6f0-8f60b8db386d",
+    "sceneType": "SCENE",
+    "settings": {
+        "preloadPackFiles": [],
+        "createMethodName": "editorCreate",
+        "sceneKey": "GamePlay",
+        "borderWidth": 1920,
+        "borderHeight": 1080
+    },
+    "displayList": [
+        {
+            "type": "Container",
+            "id": "2285e0bc-ec8d-4494-96b3-796c35685223",
+            "label": "container_bound",
+            "scope": "CLASS",
+            "components": [],
+            "list": [
+                {
+                    "type": "Rectangle",
+                    "id": "0cb7838a-3e38-46ae-8e1b-82ac949318f8",
+                    "label": "left_bound",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": 1,
+                    "y": 540,
+                    "originX": 1,
+                    "isFilled": true,
+                    "width": 1,
+                    "height": 1080
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "ea776645-80c9-4384-8fc6-2d9602cf2b13",
+                    "label": "top_bound",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": 960,
+                    "y": 1,
+                    "originY": 1,
+                    "isFilled": true,
+                    "width": 1920,
+                    "height": 1
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "6978af74-bef2-45ef-9cb7-45d7732fd0c6",
+                    "label": "right_bound",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": 1919,
+                    "y": 540,
+                    "originX": 0,
+                    "isFilled": true,
+                    "width": 1,
+                    "height": 1080
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "69bcd2af-4468-443c-8c7a-f995cc6f2f08",
+                    "label": "bottom_bound",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": 960,
+                    "y": 1080,
+                    "originY": 1,
+                    "isFilled": true,
+                    "width": 1920,
+                    "height": 1
+                }
+            ]
+        },
+        {
+            "type": "Rectangle",
+            "id": "5dadf143-7b78-43cb-bd7b-4c73582627f1",
+            "label": "rectangle_1",
+            "components": [],
+            "x": 30,
+            "y": 30,
+            "originX": 0,
+            "originY": 0,
+            "isStroked": true,
+            "width": 1860,
+            "height": 1020
+        },
+        {
+            "type": "Text",
+            "id": "009527b7-ac92-4cb5-834e-13964513f44d",
+            "label": "txtOwnScoreCard",
+            "scope": "CLASS",
+            "components": [],
+            "x": 400,
+            "y": 342,
+            "originX": 0.5,
+            "originY": 0.5,
+            "text": "0",
+            "fontSize": "45px"
+        },
+        {
+            "type": "Text",
+            "id": "a83dea2c-29a4-44b0-b47a-bf6764686ddb",
+            "label": "txtOppoScoreCard",
+            "scope": "CLASS",
+            "components": [],
+            "x": 1520,
+            "y": 342,
+            "originX": 0.5,
+            "originY": 0.5,
+            "text": "0",
+            "fontSize": "45px"
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor 2D - Scene Editor",
+        "url": "https://phasereditor2d.com",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 3
+    }
+}

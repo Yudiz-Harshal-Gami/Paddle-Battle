@@ -1,0 +1,43 @@
+{
+    "section1": {
+        "files": [
+            {
+                "url": "assets/images/game-play/blue_ball.png",
+                "type": "image",
+                "key": "blue_ball"
+            },
+            {
+                "url": "src/managers/GameManager.js",
+                "type": "script",
+                "key": "GameManager"
+            },
+            {
+                "url": "src/scenes/GamePlay.js",
+                "type": "sceneFile",
+                "key": "GamePlay"
+            },
+            {
+                "url": "assets/images/game-play/goalPost.png",
+                "type": "image",
+                "key": "goalPost"
+            },
+            {
+                "url": "assets/images/game-play/gray_ball.png",
+                "type": "image",
+                "key": "gray_ball"
+            },
+            {
+                "url": "assets/images/game-play/red_ball.png",
+                "type": "image",
+                "key": "red_ball"
+            }
+        ]
+    },
+    "meta": {
+        "app": "Phaser Editor 2D - Asset Pack Editor",
+        "contentType": "phasereditor2d.pack.core.AssetContentType",
+        "url": "https://phasereditor2d.com",
+        "version": 2,
+        "showAllFilesInBlocks": false
+    }
+}
