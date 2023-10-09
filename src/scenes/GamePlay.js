@@ -16,75 +16,55 @@ class GamePlay extends Phaser.Scene {
 	/** @returns {void} */
 	editorCreate() {
 
-		// container_bound
-		const container_bound = this.add.container(0, 0);
-
-		// left_bound
-		const left_bound = this.add.rectangle(1, 540, 1, 1080);
-		left_bound.setOrigin(1, 0.5);
-		left_bound.isFilled = true;
-		container_bound.add(left_bound);
-
-		// top_bound
-		const top_bound = this.add.rectangle(960, 1, 1920, 1);
-		top_bound.setOrigin(0.5, 1);
-		top_bound.isFilled = true;
-		container_bound.add(top_bound);
-
-		// right_bound
-		const right_bound = this.add.rectangle(1919, 540, 1, 1080);
-		right_bound.setOrigin(0, 0.5);
-		right_bound.isFilled = true;
-		container_bound.add(right_bound);
-
-		// bottom_bound
-		const bottom_bound = this.add.rectangle(960, 1080, 1920, 1);
-		bottom_bound.setOrigin(0.5, 1);
-		bottom_bound.isFilled = true;
-		container_bound.add(bottom_bound);
-
 		// rectangle_1
 		const rectangle_1 = this.add.rectangle(30, 30, 1860, 1020);
 		rectangle_1.setOrigin(0, 0);
 		rectangle_1.isStroked = true;
 
-		// txtOwnScoreCard
-		const txtOwnScoreCard = this.add.text(400, 342, "", {});
-		txtOwnScoreCard.setOrigin(0.5, 0.5);
-		txtOwnScoreCard.text = "0";
-		txtOwnScoreCard.setStyle({ "fontSize": "45px" });
+		// txtPlayer1ScoreCard
+		const txtPlayer1ScoreCard = this.add.text(400, 342, "", {});
+		txtPlayer1ScoreCard.setOrigin(0.5, 0.5);
+		txtPlayer1ScoreCard.setStyle({ "fontSize": "45px" });
 
-		// txtOppoScoreCard
-		const txtOppoScoreCard = this.add.text(1520, 342, "", {});
-		txtOppoScoreCard.setOrigin(0.5, 0.5);
-		txtOppoScoreCard.text = "0";
-		txtOppoScoreCard.setStyle({ "fontSize": "45px" });
+		// txtPlayer2ScoreCard
+		const txtPlayer2ScoreCard = this.add.text(1520, 342, "", {});
+		txtPlayer2ScoreCard.setOrigin(0.5, 0.5);
+		txtPlayer2ScoreCard.setStyle({ "fontSize": "45px" });
 
-		this.container_bound = container_bound;
-		this.left_bound = left_bound;
-		this.top_bound = top_bound;
-		this.right_bound = right_bound;
-		this.bottom_bound = bottom_bound;
-		this.txtOwnScoreCard = txtOwnScoreCard;
-		this.txtOppoScoreCard = txtOppoScoreCard;
+		// txtTimer
+		const txtTimer = this.add.text(960, 84, "", {});
+		txtTimer.setOrigin(0.5, 0.5);
+		txtTimer.setStyle({ "fontSize": "30px" });
+
+		// container_gameover_popup
+		const container_gameover_popup = this.add.container(0, 0);
+		container_gameover_popup.visible = false;
+
+		// txtWinner
+		const txtWinner = this.add.text(960, 540, "", {});
+		txtWinner.setOrigin(0.5, 0.5);
+		txtWinner.setStyle({ "fontSize": "45px" });
+		container_gameover_popup.add(txtWinner);
+
+		this.txtPlayer1ScoreCard = txtPlayer1ScoreCard;
+		this.txtPlayer2ScoreCard = txtPlayer2ScoreCard;
+		this.txtTimer = txtTimer;
+		this.container_gameover_popup = container_gameover_popup;
+		this.txtWinner = txtWinner;
 
 		this.events.emit("scene-awake");
 	}
 
+	/** @type {Phaser.GameObjects.Text} */
+	txtPlayer1ScoreCard;
+	/** @type {Phaser.GameObjects.Text} */
+	txtPlayer2ScoreCard;
+	/** @type {Phaser.GameObjects.Text} */
+	txtTimer;
 	/** @type {Phaser.GameObjects.Container} */
-	container_bound;
-	/** @type {Phaser.GameObjects.Rectangle} */
-	left_bound;
-	/** @type {Phaser.GameObjects.Rectangle} */
-	top_bound;
-	/** @type {Phaser.GameObjects.Rectangle} */
-	right_bound;
-	/** @type {Phaser.GameObjects.Rectangle} */
-	bottom_bound;
+	container_gameover_popup;
 	/** @type {Phaser.GameObjects.Text} */
-	txtOwnScoreCard;
-	/** @type {Phaser.GameObjects.Text} */
-	txtOppoScoreCard;
+	txtWinner;
 
 	/* START-USER-CODE */
 
@@ -98,57 +78,165 @@ class GamePlay extends Phaser.Scene {
 
 		// set Game Data
 		this.score = {
-			ownScore: 0,
-			oppoScore: 0
+			player1Score: 0,
+			player2Score: 0
 		}
+
+		this.isGameOver = false
+		this.isTimeOver = false
 
 		this.isBallCollide = false
 
-		this.txtOwnScoreCard.setText(this.score.ownScore);
-		this.txtOppoScoreCard.setText(this.score.oppoScore);
+		this.txtPlayer1ScoreCard.setText(this.score.player1Score);
+		this.txtPlayer2ScoreCard.setText(this.score.player2Score);
 
 		// set World Bound Size
 		this.world = this.physics.world;
 		this.world.setBounds(30, 30, 1860, 1020);
 
+		this.gameTimer(120)
 		this.playerBalls();
+		this.setBall();
 		this.moveBall1();
 		this.moveBall2();
-		this.setBall();
 		this.setGoalPost();
 
 	}
 
 	update() {
-		if (!this.isBallCollide) {
+		if (!this.isBallCollide && !this.isGameOver) {
 			this.checkGoal();
 		}
 	}
 
-	setGoalPost() {
-		this.ownPlayerGoalPost = this.physics.add.image(1912, 540, "goalPost");
-		this.ownPlayerGoalPost.body.setImmovable(true);
-		this.ownPlayerGoalPost.body.setAllowGravity(false);
+	playerBalls() {
+		this.player1Ball = this.physics.add.image(this.oGameManager.ballInfo.player1Ball.x, this.oGameManager.ballInfo.player1Ball.y, "blue_ball").setCircle(54, 0, 0).setCollideWorldBounds(true);
+		this.player1Ball.setImmovable(false);
+		this.player1Ball.setScale(this.oGameManager.ballInfo.player1Ball.scale)
+		this.player1Ball.setBounce(this.oGameManager.ballInfo.player1Ball.bounce);
+		this.player1Ball.setMass(this.oGameManager.ballInfo.player1Ball.mass);
+		this.player1Ball.setMaxVelocity(this.oGameManager.ballInfo.player1Ball.maxVelocity);
 
-		this.oppoPlayerGoalPost = this.physics.add.image(8, 540, "goalPost");
-		this.oppoPlayerGoalPost.body.setImmovable(true);
-		this.oppoPlayerGoalPost.body.setAllowGravity(false);
+		this.player2Ball = this.physics.add.image(this.oGameManager.ballInfo.player2Ball.x, this.oGameManager.ballInfo.player2Ball.y, "red_ball").setCircle(54, 0, 0).setCollideWorldBounds(true);
+		this.player2Ball.setImmovable(false)
+		this.player2Ball.setScale(this.oGameManager.ballInfo.player2Ball.scale)
+		this.player2Ball.setBounce(this.oGameManager.ballInfo.player2Ball.bounce);
+		this.player2Ball.setMass(this.oGameManager.ballInfo.player2Ball.mass);
+		this.player2Ball.setMaxVelocity(this.oGameManager.ballInfo.player2Ball.maxVelocity);
+
+		this.physics.add.collider(this.player1Ball, this.player2Ball);
+	}
+
+	setBall() {
+		this.ball = this.physics.add.image(this.oGameManager.ballInfo.mainBall.x, this.oGameManager.ballInfo.mainBall.y, "gray_ball").setCircle(54, 0, 0).setCollideWorldBounds(true);
+		this.ball.setImmovable(false)
+		this.ball.setScale(this.oGameManager.ballInfo.mainBall.scale)
+		this.ball.setBounce(this.oGameManager.ballInfo.mainBall.bounce);
+		this.ball.setMass(this.oGameManager.ballInfo.mainBall.mass);
+		this.ball.setMaxVelocity(this.oGameManager.ballInfo.mainBall.maxVelocity);
+
+		this.physics.add.collider(this.player1Ball, this.ball);
+		this.physics.add.collider(this.player2Ball, this.ball);
+	}
+
+	moveBall1() {
+		if (this.player1Ball.body !== undefined) {
+			this.input.keyboard.on('keydown', (event) => {
+				switch (event.code) {
+					case 'KeyA':
+						this.player1Ball.body.setAccelerationX(-this.oGameManager.ballInfo.player1Ball.accelerationX);
+						break;
+					case 'KeyD':
+						this.player1Ball.body.setAccelerationX(this.oGameManager.ballInfo.player1Ball.accelerationX);
+						break;
+					case 'KeyW':
+						this.player1Ball.body.setAccelerationY(-this.oGameManager.ballInfo.player1Ball.accelerationY);
+						break;
+					case 'KeyS':
+						this.player1Ball.body.setAccelerationY(this.oGameManager.ballInfo.player1Ball.accelerationY);
+						break;
+				}
+			})
+			this.input.keyboard.on('keyup', (event) => {
+				switch (event.code) {
+					case 'KeyA':
+						this.player1Ball.body.setAccelerationX(0);
+						break;
+					case 'KeyD':
+						this.player1Ball.body.setAccelerationX(0);
+						break;
+					case 'KeyW':
+						this.player1Ball.body.setAccelerationY(0);
+						break;
+					case 'KeyS':
+						this.player1Ball.body.setAccelerationY(0);
+						break;
+				}
+			});
+		}
+	}
+
+	moveBall2() {
+		if (this.player2Ball !== undefined) {
+			this.input.keyboard.on('keydown', (event) => {
+				switch (event.code) {
+					case 'ArrowLeft':
+						this.player2Ball.body.setAccelerationX(-this.oGameManager.ballInfo.player2Ball.accelerationX);
+						break;
+					case 'ArrowRight':
+						this.player2Ball.body.setAccelerationX(this.oGameManager.ballInfo.player2Ball.accelerationX);
+						break;
+					case 'ArrowUp':
+						this.player2Ball.body.setAccelerationY(-this.oGameManager.ballInfo.player2Ball.accelerationY);
+						break;
+					case 'ArrowDown':
+						this.player2Ball.body.setAccelerationY(this.oGameManager.ballInfo.player2Ball.accelerationY);
+						break;
+				}
+			});
+			this.input.keyboard.on('keyup', (event) => {
+				switch (event.code) {
+					case 'ArrowLeft':
+						this.player2Ball.body.setAccelerationX(0);
+						break;
+					case 'ArrowRight':
+						this.player2Ball.body.setAccelerationX(0);
+						break;
+					case 'ArrowUp':
+						this.player2Ball.body.setAccelerationY(0);
+						break;
+					case 'ArrowDown':
+						this.player2Ball.body.setAccelerationY(0);
+						break;
+				}
+			});
+		}
+	}
+
+	setGoalPost() {
+		this.player1GoalPost = this.physics.add.image(1912, 540, "goalPost");
+		this.player1GoalPost.body.setImmovable(true);
+		this.player1GoalPost.body.setAllowGravity(false);
+
+		this.player2GoalPost = this.physics.add.image(8, 540, "goalPost");
+		this.player2GoalPost.body.setImmovable(true);
+		this.player2GoalPost.body.setAllowGravity(false);
 	}
 
 	checkGoal() {
-		this.physics.collide(this.ownPlayerGoalPost, this.ball, () => {
+		this.physics.collide(this.player1GoalPost, this.ball, () => {
 			this.isBallCollide = true
-			this.score.ownScore += 1
-			this.txtOwnScoreCard.setText(this.score.ownScore);
-			this.ballDestroy();
-			this.setGoalAnimation(this.ball.x, this.ball.y, 'right')
+			this.score.player1Score += 1
+			this.txtPlayer1ScoreCard.setText(this.score.player1Score);
+			this.setGoalAnimation(this.ball.x, this.ball.y, 'right');
+			this.checkGameStatus();
 		})
-		this.physics.collide(this.oppoPlayerGoalPost, this.ball, () => {
+		this.physics.collide(this.player2GoalPost, this.ball, () => {
 			this.isBallCollide = true
-			this.score.oppoScore += 1
-			this.txtOppoScoreCard.setText(this.score.oppoScore);
+			this.score.player2Score += 1
+			this.txtPlayer2ScoreCard.setText(this.score.player2Score);
 			this.setGoalAnimation(this.ball.x, this.ball.y, 'left')
-			this.ballDestroy();
+			this.checkGameStatus();
 		})
 	}
 
@@ -163,7 +251,7 @@ class GamePlay extends Phaser.Scene {
 				break;
 		}
 
-		let tempBall = this.add.image(ballX, ballY, "gray_ball").setScale(this.oGameManager.ballInfo.mainBall.scale)
+		let tempBall = this.add.image(ballX, ballY, "gray_ball").setScale(this.oGameManager.ballInfo.mainBall.scale);
 
 		this.tweens.add({
 			targets: tempBall,
@@ -179,141 +267,125 @@ class GamePlay extends Phaser.Scene {
 	}
 
 	ballDestroy() {
-		this.ball.destroy();
-		this.ownPlayerBall.setVisible(false);
-		this.oppoPlayerBall.setVisible(false);
-		let tempTime = 5
+
+		this.ball.setVisible(false);
+		this.player1Ball.setVisible(false);
+		this.player2Ball.setVisible(false);
+		let tempTime = 2
 
 		// set time at score card
-		this.txtOwnScoreCard.setText(tempTime);
-		this.txtOppoScoreCard.setText(tempTime);
+		this.txtPlayer1ScoreCard.setText(tempTime);
+		this.txtPlayer2ScoreCard.setText(tempTime);
 
-		// display temp ball
-		let tempOwnBall = this.add.image(this.oGameManager.ballInfo.ownPlayerBall.x, this.oGameManager.ballInfo.ownPlayerBall.y, "blue_ball").setScale(this.oGameManager.ballInfo.ownPlayerBall.scale)
-		let tempOppoBall = this.add.image(this.oGameManager.ballInfo.oppoPlayerBall.x, this.oGameManager.ballInfo.oppoPlayerBall.y, "red_ball").setScale(this.oGameManager.ballInfo.oppoPlayerBall.scale)
-		let tempMainBall = this.add.image(this.oGameManager.ballInfo.mainBall.x, this.oGameManager.ballInfo.mainBall.y, "gray_ball").setScale(this.oGameManager.ballInfo.mainBall.scale)
+		if (!this.isTimeOver) {
 
+			// display temp ball
+			let tempOwnBall = this.add.image(this.oGameManager.ballInfo.player1Ball.x, this.oGameManager.ballInfo.player1Ball.y, "blue_ball").setScale(this.oGameManager.ballInfo.player1Ball.scale)
+			let tempOppoBall = this.add.image(this.oGameManager.ballInfo.player2Ball.x, this.oGameManager.ballInfo.player2Ball.y, "red_ball").setScale(this.oGameManager.ballInfo.player2Ball.scale)
+			let tempMainBall = this.add.image(this.oGameManager.ballInfo.mainBall.x, this.oGameManager.ballInfo.mainBall.y, "gray_ball").setScale(this.oGameManager.ballInfo.mainBall.scale)
 
-		let timeInterval = setInterval(() => {
-			this.txtOwnScoreCard.setText(tempTime);
-			this.txtOppoScoreCard.setText(tempTime);
-			tempTime--
-			if (tempTime < 0) {
-				clearTimeout(timeInterval);
-				// set Score
-				this.txtOwnScoreCard.setText(this.score.ownScore);
-				this.txtOppoScoreCard.setText(this.score.oppoScore);
+			let timeInterval = setInterval(() => {
+				this.txtPlayer1ScoreCard.setText(tempTime);
+				this.txtPlayer2ScoreCard.setText(tempTime);
+				tempTime--
 
-				// set New Body
-				this.ownPlayerBall.destroy();
-				this.oppoPlayerBall.destroy();
-				this.playerBalls();
-				this.setBall();
+				if (this.isTimeOver) {
+					clearTimeout(timeInterval);
+					this.ball.setVisible(false);
+					this.player1Ball.setVisible(false);
+					this.player2Ball.setVisible(false);
 
-				// destroy tempBall
-				tempOwnBall.destroy();
-				tempOppoBall.destroy();
-				tempMainBall.destroy();
+					tempOwnBall.destroy();
+					tempOppoBall.destroy();
+					tempMainBall.destroy();
 
-				this.isBallCollide = false
+					this.gameOver();
+				}
+
+				if (tempTime < 0) {
+					clearTimeout(timeInterval);
+					// set Score
+					this.txtPlayer1ScoreCard.setText(this.score.player1Score);
+					this.txtPlayer2ScoreCard.setText(this.score.player2Score);
+
+					// set New Body
+					this.ball.destroy();
+					this.player1Ball.destroy();
+					this.player2Ball.destroy();
+					this.playerBalls();
+					this.setBall();
+
+					// destroy tempBall
+					tempOwnBall.destroy();
+					tempOppoBall.destroy();
+					tempMainBall.destroy();
+
+					this.isBallCollide = false
+				}
+			}, 1000);
+		}
+	}
+
+	gameTimer(duration) {
+		let timer = duration, minutes, seconds;
+
+		minutes = parseInt(timer / 60, 10);
+		seconds = parseInt(timer % 60, 10);
+
+		minutes = minutes < 10 ? "0" + minutes : minutes;
+		seconds = seconds < 10 ? "0" + seconds : seconds;
+
+		this.txtTimer.setText(`${minutes}.${seconds}`)
+
+		timer--;
+
+		this.timeInterval = setInterval(() => {
+
+			minutes = parseInt(timer / 60, 10);
+			seconds = parseInt(timer % 60, 10);
+
+			minutes = minutes < 10 ? "0" + minutes : minutes;
+			seconds = seconds < 10 ? "0" + seconds : seconds;
+
+			this.txtTimer.setText(`${minutes}.${seconds}`)
+
+			if (--timer < -1) {
+				timer = duration;
+			}
+
+			if (timer < 0) {
+				clearInterval(this.timeInterval);
+				this.isTimeOver = true;
+				this.checkGameStatus();
 			}
 		}, 1000);
-
 	}
 
-	playerBalls() {
-		this.ownPlayerBall = this.physics.add.image(this.oGameManager.ballInfo.ownPlayerBall.x, this.oGameManager.ballInfo.ownPlayerBall.y, "blue_ball").setCircle(54, 0, 0).setCollideWorldBounds(true);
-		this.ownPlayerBall.setImmovable(false);
-		this.ownPlayerBall.setScale(this.oGameManager.ballInfo.ownPlayerBall.scale)
-		this.ownPlayerBall.setBounce(this.oGameManager.ballInfo.ownPlayerBall.bounce);
-		this.ownPlayerBall.setMass(this.oGameManager.ballInfo.ownPlayerBall.mass);
-		this.ownPlayerBall.setMaxVelocity(this.oGameManager.ballInfo.ownPlayerBall.maxVelocity);
-
-		this.oppoPlayerBall = this.physics.add.image(this.oGameManager.ballInfo.oppoPlayerBall.x, this.oGameManager.ballInfo.oppoPlayerBall.y, "red_ball").setCircle(54, 0, 0).setCollideWorldBounds(true);
-		this.oppoPlayerBall.setImmovable(false)
-		this.oppoPlayerBall.setScale(this.oGameManager.ballInfo.oppoPlayerBall.scale)
-		this.oppoPlayerBall.setBounce(this.oGameManager.ballInfo.oppoPlayerBall.bounce);
-		this.oppoPlayerBall.setMass(this.oGameManager.ballInfo.oppoPlayerBall.mass);
-		this.oppoPlayerBall.setMaxVelocity(this.oGameManager.ballInfo.oppoPlayerBall.maxVelocity);
-
-		this.physics.add.collider(this.ownPlayerBall, this.oppoPlayerBall);
-	}
-
-	setBall() {
-		this.ball = this.physics.add.image(this.oGameManager.ballInfo.mainBall.x, this.oGameManager.ballInfo.mainBall.y, "gray_ball").setCircle(54, 0, 0).setCollideWorldBounds(true);
-		this.ball.setImmovable(false)
-		this.ball.setScale(this.oGameManager.ballInfo.mainBall.scale)
-		this.ball.setBounce(this.oGameManager.ballInfo.mainBall.bounce);
-		this.ball.setMass(this.oGameManager.ballInfo.mainBall.mass);
-		this.ball.setMaxVelocity(this.oGameManager.ballInfo.mainBall.maxVelocity);
-
-		this.physics.add.collider(this.ownPlayerBall, this.ball);
-		this.physics.add.collider(this.oppoPlayerBall, this.ball);
-	}
-
-	moveBall1() {
-		if (this.ownPlayerBall.body !== undefined) {
-			this.input.keyboard.on('keydown-A', () => {
-				this.ownPlayerBall.body.setAccelerationX(-500);
-			});
-			this.input.keyboard.on('keyup-A', () => {
-				this.ownPlayerBall.body.setAccelerationX(0);
-			});
-			this.input.keyboard.on('keydown-D', () => {
-				this.ownPlayerBall.body.setAccelerationX(500);
-			});
-			this.input.keyboard.on('keyup-D', () => {
-				this.ownPlayerBall.body.setAccelerationX(0);
-			});
-			this.input.keyboard.on('keydown-W', () => {
-				this.ownPlayerBall.body.setAccelerationY(-1000);
-			});
-			this.input.keyboard.on('keyup-W', () => {
-				this.ownPlayerBall.body.setAccelerationY(0);
-			});
-			this.input.keyboard.on('keydown-S', () => {
-				this.ownPlayerBall.body.setAccelerationY(1000);
-			});
-			this.input.keyboard.on('keyup-S', () => {
-				this.ownPlayerBall.body.setAccelerationY(0);
-			});
+	checkGameStatus() {
+		if (this.isTimeOver) {
+			this.gameOver();
 		}
+		this.ballDestroy();
 	}
-	moveBall2() {
-		if (this.oppoPlayerBall !== undefined) {
-			this.input.keyboard.on('keydown', (event) => {
-				switch (event.code) {
-					case 'ArrowLeft':
-						this.oppoPlayerBall.body.setAccelerationX(-500);
-						break;
-					case 'ArrowRight':
-						this.oppoPlayerBall.body.setAccelerationX(500);
-						break;
-					case 'ArrowUp':
-						this.oppoPlayerBall.body.setAccelerationY(-1000);
-						break;
-					case 'ArrowDown':
-						this.oppoPlayerBall.body.setAccelerationY(1000);
-						break;
-				}
-			});
-			this.input.keyboard.on('keyup', (event) => {
-				switch (event.code) {
-					case 'ArrowLeft':
-						this.oppoPlayerBall.body.setAccelerationX(0);
-						break;
-					case 'ArrowRight':
-						this.oppoPlayerBall.body.setAccelerationX(0);
-						break;
-					case 'ArrowUp':
-						this.oppoPlayerBall.body.setAccelerationY(0);
-						break;
-					case 'ArrowDown':
-						this.oppoPlayerBall.body.setAccelerationY(0);
-						break;
-				}
-			});
+
+	gameOver() {
+		this.isGameOver = true;
+
+		this.txtPlayer2ScoreCard.setVisible(false);
+		this.txtPlayer1ScoreCard.setVisible(false);
+
+		this.container_gameover_popup.setVisible(true);
+
+		if (this.score.player1Score > this.score.player2Score) {
+			this.txtWinner.setText('Player 1 Win')
 		}
+		else if (this.score.player1Score < this.score.player2Score) {
+			this.txtWinner.setText('Player 2 Win')
+		}
+		else {
+			this.txtWinner.setText('Tie')
+		}
+
 	}
 
 	/* END-USER-CODE */

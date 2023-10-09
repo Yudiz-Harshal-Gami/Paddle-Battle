@@ -10,67 +10,6 @@
     },
     "displayList": [
         {
-            "type": "Container",
-            "id": "2285e0bc-ec8d-4494-96b3-796c35685223",
-            "label": "container_bound",
-            "scope": "CLASS",
-            "components": [],
-            "list": [
-                {
-                    "type": "Rectangle",
-                    "id": "0cb7838a-3e38-46ae-8e1b-82ac949318f8",
-                    "label": "left_bound",
-                    "scope": "CLASS",
-                    "components": [],
-                    "x": 1,
-                    "y": 540,
-                    "originX": 1,
-                    "isFilled": true,
-                    "width": 1,
-                    "height": 1080
-                },
-                {
-                    "type": "Rectangle",
-                    "id": "ea776645-80c9-4384-8fc6-2d9602cf2b13",
-                    "label": "top_bound",
-                    "scope": "CLASS",
-                    "components": [],
-                    "x": 960,
-                    "y": 1,
-                    "originY": 1,
-                    "isFilled": true,
-                    "width": 1920,
-                    "height": 1
-                },
-                {
-                    "type": "Rectangle",
-                    "id": "6978af74-bef2-45ef-9cb7-45d7732fd0c6",
-                    "label": "right_bound",
-                    "scope": "CLASS",
-                    "components": [],
-                    "x": 1919,
-                    "y": 540,
-                    "originX": 0,
-                    "isFilled": true,
-                    "width": 1,
-                    "height": 1080
-                },
-                {
-                    "type": "Rectangle",
-                    "id": "69bcd2af-4468-443c-8c7a-f995cc6f2f08",
-                    "label": "bottom_bound",
-                    "scope": "CLASS",
-                    "components": [],
-                    "x": 960,
-                    "y": 1080,
-                    "originY": 1,
-                    "isFilled": true,
-                    "width": 1920,
-                    "height": 1
-                }
-            ]
-        },
-        {
             "type": "Rectangle",
             "id": "5dadf143-7b78-43cb-bd7b-4c73582627f1",
             "label": "rectangle_1",
@@ -86,28 +25,60 @@
         {
             "type": "Text",
             "id": "009527b7-ac92-4cb5-834e-13964513f44d",
-            "label": "txtOwnScoreCard",
+            "label": "txtPlayer1ScoreCard",
             "scope": "CLASS",
             "components": [],
             "x": 400,
             "y": 342,
             "originX": 0.5,
             "originY": 0.5,
-            "text": "0",
             "fontSize": "45px"
         },
         {
             "type": "Text",
             "id": "a83dea2c-29a4-44b0-b47a-bf6764686ddb",
-            "label": "txtOppoScoreCard",
+            "label": "txtPlayer2ScoreCard",
             "scope": "CLASS",
             "components": [],
             "x": 1520,
             "y": 342,
             "originX": 0.5,
             "originY": 0.5,
-            "text": "0",
             "fontSize": "45px"
+        },
+        {
+            "type": "Text",
+            "id": "9e63a68f-88c2-450f-94ca-8fcec9931e96",
+            "label": "txtTimer",
+            "scope": "CLASS",
+            "components": [],
+            "x": 960,
+            "y": 84,
+            "originX": 0.5,
+            "originY": 0.5,
+            "fontSize": "30px"
+        },
+        {
+            "type": "Container",
+            "id": "eca9e64e-b032-47d0-95ad-4895742ff312",
+            "label": "container_gameover_popup",
+            "scope": "CLASS",
+            "components": [],
+            "visible": false,
+            "list": [
+                {
+                    "type": "Text",
+                    "id": "0e86eeea-850e-4d95-899e-e721ba45baa1",
+                    "label": "txtWinner",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": 960,
+                    "y": 540,
+                    "originX": 0.5,
+                    "originY": 0.5,
+                    "fontSize": "45px"
+                }
+            ]
         }
     ],
     "plainObjects": [],
