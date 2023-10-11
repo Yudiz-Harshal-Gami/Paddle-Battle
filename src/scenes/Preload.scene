@@ -13,18 +13,41 @@
     },
     "displayList": [
         {
+            "type": "Image",
+            "id": "68985b8c-e931-49ef-98e4-c38fc6573f36",
+            "label": "splash_background",
+            "components": [],
+            "texture": {
+                "key": "splash_background"
+            },
+            "x": 960,
+            "y": 540
+        },
+        {
             "type": "Text",
             "id": "2ce42443-5227-4c9b-b498-e81f9a21cde3",
             "label": "progress",
+            "scope": "CLASS",
             "components": [
                 "PreloadText"
             ],
             "x": 960,
-            "y": 540,
+            "y": 740,
             "originX": 0.5,
             "originY": 0.5,
             "text": "0%",
             "fontSize": "60px"
+        },
+        {
+            "type": "Image",
+            "id": "968f88c3-5eb8-47af-9747-229b094093ff",
+            "label": "logo",
+            "components": [],
+            "texture": {
+                "key": "logo"
+            },
+            "x": 960,
+            "y": 234
         }
     ],
     "plainObjects": [],

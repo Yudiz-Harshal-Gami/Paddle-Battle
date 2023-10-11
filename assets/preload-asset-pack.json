@@ -1,6 +1,17 @@
 {
     "section1": {
-        "files": []
+        "files": [
+            {
+                "url": "assets/images/splash-screen/logo.png",
+                "type": "image",
+                "key": "logo"
+            },
+            {
+                "url": "assets/images/splash-screen/splash_background.png",
+                "type": "image",
+                "key": "splash_background"
+            }
+        ]
     },
     "meta": {
         "app": "Phaser Editor 2D - Asset Pack Editor",

@@ -8,7 +8,105 @@
         "borderWidth": 1920,
         "borderHeight": 1080
     },
-    "displayList": [],
+    "displayList": [
+        {
+            "type": "Image",
+            "id": "5730b9e1-a4cf-4dfd-9621-f938f2103a71",
+            "label": "splash_background",
+            "components": [],
+            "texture": {
+                "key": "splash_background"
+            },
+            "x": 960,
+            "y": 540
+        },
+        {
+            "type": "Image",
+            "id": "fbdadf13-d0c5-45e9-a7d2-de671276a80b",
+            "label": "logo",
+            "scope": "CLASS",
+            "components": [],
+            "texture": {
+                "key": "logo"
+            },
+            "x": 960,
+            "y": 234
+        },
+        {
+            "type": "Image",
+            "id": "6eaf8c15-6172-4061-aea7-2a8e5c50db3e",
+            "label": "btnPlay",
+            "scope": "CLASS",
+            "components": [],
+            "texture": {
+                "key": "button"
+            },
+            "x": 960,
+            "y": 509
+        },
+        {
+            "type": "Text",
+            "id": "40c8abef-f301-4712-b70a-c54af1452e04",
+            "label": "txtPlay",
+            "scope": "CLASS",
+            "components": [],
+            "x": 960,
+            "y": 509,
+            "originX": 0.5,
+            "originY": 0.5,
+            "text": "PLAY",
+            "fontSize": "60px"
+        },
+        {
+            "type": "Image",
+            "id": "2ffaea71-4411-491e-8b0b-3f7173e58f07",
+            "label": "btnHowToPlay",
+            "scope": "CLASS",
+            "components": [],
+            "texture": {
+                "key": "button"
+            },
+            "x": 960,
+            "y": 691
+        },
+        {
+            "type": "Text",
+            "id": "9fb4a5d8-dcf4-4d1f-9287-9c6e21d08980",
+            "label": "txtHowToPlay",
+            "scope": "CLASS",
+            "components": [],
+            "x": 960,
+            "y": 691,
+            "originX": 0.5,
+            "originY": 0.5,
+            "text": "HOW TO PLAY",
+            "fontSize": "60px"
+        },
+        {
+            "type": "Image",
+            "id": "060ae5fd-4b95-4d32-b353-3a9f222fded4",
+            "label": "btnVolume",
+            "scope": "CLASS",
+            "components": [],
+            "texture": {
+                "key": "volume"
+            },
+            "x": 890,
+            "y": 857
+        },
+        {
+            "type": "Image",
+            "id": "94c01a61-4fbf-4119-8f21-237b866bf7df",
+            "label": "btnMusic",
+            "scope": "CLASS",
+            "components": [],
+            "texture": {
+                "key": "music"
+            },
+            "x": 1030,
+            "y": 857
+        }
+    ],
     "plainObjects": [],
     "meta": {
         "app": "Phaser Editor 2D - Scene Editor",

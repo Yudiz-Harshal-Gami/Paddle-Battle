@@ -16,45 +16,92 @@ class GamePlay extends Phaser.Scene {
 	/** @returns {void} */
 	editorCreate() {
 
-		// rectangle_1
-		const rectangle_1 = this.add.rectangle(30, 30, 1860, 1020);
-		rectangle_1.setOrigin(0, 0);
-		rectangle_1.isStroked = true;
+		// game_background
+		this.add.image(960, 540, "game_background");
+
+		// container_game_play
+		const container_game_play = this.add.container(0, 0);
+
+		// stick
+		const stick = this.add.image(960, 540, "stick");
+		container_game_play.add(stick);
 
 		// txtPlayer1ScoreCard
-		const txtPlayer1ScoreCard = this.add.text(400, 342, "", {});
+		const txtPlayer1ScoreCard = this.add.text(570, 540, "", {});
 		txtPlayer1ScoreCard.setOrigin(0.5, 0.5);
-		txtPlayer1ScoreCard.setStyle({ "fontSize": "45px" });
+		txtPlayer1ScoreCard.setStyle({ "color": "#610480", "fontSize": "400px" });
+		container_game_play.add(txtPlayer1ScoreCard);
 
 		// txtPlayer2ScoreCard
-		const txtPlayer2ScoreCard = this.add.text(1520, 342, "", {});
+		const txtPlayer2ScoreCard = this.add.text(1350, 540, "", {});
 		txtPlayer2ScoreCard.setOrigin(0.5, 0.5);
-		txtPlayer2ScoreCard.setStyle({ "fontSize": "45px" });
+		txtPlayer2ScoreCard.setStyle({ "color": "#804500", "fontSize": "400px" });
+		container_game_play.add(txtPlayer2ScoreCard);
 
 		// txtTimer
-		const txtTimer = this.add.text(960, 84, "", {});
+		const txtTimer = this.add.text(960, 121, "", {});
 		txtTimer.setOrigin(0.5, 0.5);
-		txtTimer.setStyle({ "fontSize": "30px" });
+		txtTimer.setStyle({ "fontSize": "38px" });
+		container_game_play.add(txtTimer);
 
 		// container_gameover_popup
 		const container_gameover_popup = this.add.container(0, 0);
 		container_gameover_popup.visible = false;
 
 		// txtWinner
-		const txtWinner = this.add.text(960, 540, "", {});
+		const txtWinner = this.add.text(960, 351, "", {});
 		txtWinner.setOrigin(0.5, 0.5);
-		txtWinner.setStyle({ "fontSize": "45px" });
+		txtWinner.setStyle({ "fontSize": "60px" });
 		container_gameover_popup.add(txtWinner);
 
+		// btnGameOver
+		const btnGameOver = this.add.image(960, 655, "button");
+		btnGameOver.scaleX = 0.8;
+		btnGameOver.scaleY = 0.8;
+		container_gameover_popup.add(btnGameOver);
+
+		// txtGameOver
+		const txtGameOver = this.add.text(960, 653, "", {});
+		txtGameOver.setOrigin(0.5, 0.5);
+		txtGameOver.text = "Home";
+		txtGameOver.setStyle({ "color": "#ffffffff", "fontSize": "55px" });
+		container_gameover_popup.add(txtGameOver);
+
+		// txtPlayer1FinalScore
+		const txtPlayer1FinalScore = this.add.text(924, 492, "", {});
+		txtPlayer1FinalScore.setOrigin(1, 0.5);
+		txtPlayer1FinalScore.setStyle({ "color": "#610480", "fontSize": "80px" });
+		container_gameover_popup.add(txtPlayer1FinalScore);
+
+		// txtPlayer2FinalScore
+		const txtPlayer2FinalScore = this.add.text(996, 492, "", {});
+		txtPlayer2FinalScore.setOrigin(0, 0.5);
+		txtPlayer2FinalScore.setStyle({ "color": "#804500", "fontSize": "80px" });
+		container_gameover_popup.add(txtPlayer2FinalScore);
+
+		// text_1
+		const text_1 = this.add.text(960, 492, "", {});
+		text_1.setOrigin(0.5, 0.5);
+		text_1.text = "-";
+		text_1.setStyle({ "fontSize": "80px" });
+		container_gameover_popup.add(text_1);
+
+		this.container_game_play = container_game_play;
 		this.txtPlayer1ScoreCard = txtPlayer1ScoreCard;
 		this.txtPlayer2ScoreCard = txtPlayer2ScoreCard;
 		this.txtTimer = txtTimer;
 		this.container_gameover_popup = container_gameover_popup;
 		this.txtWinner = txtWinner;
+		this.btnGameOver = btnGameOver;
+		this.txtGameOver = txtGameOver;
+		this.txtPlayer1FinalScore = txtPlayer1FinalScore;
+		this.txtPlayer2FinalScore = txtPlayer2FinalScore;
 
 		this.events.emit("scene-awake");
 	}
 
+	/** @type {Phaser.GameObjects.Container} */
+	container_game_play;
 	/** @type {Phaser.GameObjects.Text} */
 	txtPlayer1ScoreCard;
 	/** @type {Phaser.GameObjects.Text} */
@@ -65,6 +112,14 @@ class GamePlay extends Phaser.Scene {
 	container_gameover_popup;
 	/** @type {Phaser.GameObjects.Text} */
 	txtWinner;
+	/** @type {Phaser.GameObjects.Image} */
+	btnGameOver;
+	/** @type {Phaser.GameObjects.Text} */
+	txtGameOver;
+	/** @type {Phaser.GameObjects.Text} */
+	txtPlayer1FinalScore;
+	/** @type {Phaser.GameObjects.Text} */
+	txtPlayer2FinalScore;
 
 	/* START-USER-CODE */
 
@@ -92,14 +147,28 @@ class GamePlay extends Phaser.Scene {
 
 		// set World Bound Size
 		this.world = this.physics.world;
-		this.world.setBounds(30, 30, 1860, 1020);
+		this.world.setBounds(68, 68, 1784, 944);
 
-		this.gameTimer(120)
+		this.gameTimer(this.oGameManager.gameTime)
 		this.playerBalls();
 		this.setBall();
 		this.moveBall1();
 		this.moveBall2();
 		this.setGoalPost();
+
+		this.btnGameOver.setInteractive();
+		this.btnGameOver.on('pointerdown', () => {
+			this.scene.stop('GamePlay')
+			this.scene.start('Level')
+		})
+		this.btnGameOver.on('pointerover', () => {
+			this.pointerOverTween(this.btnGameOver, 0.8)
+			this.pointerOverTween(this.txtGameOver, 1)
+		})
+		this.btnGameOver.on('pointerout', () => {
+			this.pointerOutTween(this.btnGameOver, 0.8)
+			this.pointerOutTween(this.txtGameOver, 1)
+		})
 
 	}
 
@@ -110,30 +179,33 @@ class GamePlay extends Phaser.Scene {
 	}
 
 	playerBalls() {
-		this.player1Ball = this.physics.add.image(this.oGameManager.ballInfo.player1Ball.x, this.oGameManager.ballInfo.player1Ball.y, "blue_ball").setCircle(54, 0, 0).setCollideWorldBounds(true);
+		this.player1Ball = this.physics.add.image(this.oGameManager.ballInfo.player1Ball.x, this.oGameManager.ballInfo.player1Ball.y, "purple_ball").setCircle(52, 0, 0).setCollideWorldBounds(true);
 		this.player1Ball.setImmovable(false);
 		this.player1Ball.setScale(this.oGameManager.ballInfo.player1Ball.scale)
 		this.player1Ball.setBounce(this.oGameManager.ballInfo.player1Ball.bounce);
 		this.player1Ball.setMass(this.oGameManager.ballInfo.player1Ball.mass);
 		this.player1Ball.setMaxVelocity(this.oGameManager.ballInfo.player1Ball.maxVelocity);
+		this.container_game_play.add(this.player1Ball)
 
-		this.player2Ball = this.physics.add.image(this.oGameManager.ballInfo.player2Ball.x, this.oGameManager.ballInfo.player2Ball.y, "red_ball").setCircle(54, 0, 0).setCollideWorldBounds(true);
+		this.player2Ball = this.physics.add.image(this.oGameManager.ballInfo.player2Ball.x, this.oGameManager.ballInfo.player2Ball.y, "orange_ball").setCircle(52, 0, 0).setCollideWorldBounds(true);
 		this.player2Ball.setImmovable(false)
 		this.player2Ball.setScale(this.oGameManager.ballInfo.player2Ball.scale)
 		this.player2Ball.setBounce(this.oGameManager.ballInfo.player2Ball.bounce);
 		this.player2Ball.setMass(this.oGameManager.ballInfo.player2Ball.mass);
 		this.player2Ball.setMaxVelocity(this.oGameManager.ballInfo.player2Ball.maxVelocity);
+		this.container_game_play.add(this.player2Ball)
 
 		this.physics.add.collider(this.player1Ball, this.player2Ball);
 	}
 
 	setBall() {
-		this.ball = this.physics.add.image(this.oGameManager.ballInfo.mainBall.x, this.oGameManager.ballInfo.mainBall.y, "gray_ball").setCircle(54, 0, 0).setCollideWorldBounds(true);
+		this.ball = this.physics.add.image(this.oGameManager.ballInfo.mainBall.x, this.oGameManager.ballInfo.mainBall.y, "green_ball").setCircle(30, 2, 2).setCollideWorldBounds(true);
 		this.ball.setImmovable(false)
 		this.ball.setScale(this.oGameManager.ballInfo.mainBall.scale)
 		this.ball.setBounce(this.oGameManager.ballInfo.mainBall.bounce);
 		this.ball.setMass(this.oGameManager.ballInfo.mainBall.mass);
 		this.ball.setMaxVelocity(this.oGameManager.ballInfo.mainBall.maxVelocity);
+		this.container_game_play.add(this.ball)
 
 		this.physics.add.collider(this.player1Ball, this.ball);
 		this.physics.add.collider(this.player2Ball, this.ball);
@@ -214,13 +286,16 @@ class GamePlay extends Phaser.Scene {
 	}
 
 	setGoalPost() {
-		this.player1GoalPost = this.physics.add.image(1912, 540, "goalPost");
+		this.player1GoalPost = this.physics.add.image(1855, 540, "goal_post");
 		this.player1GoalPost.body.setImmovable(true);
 		this.player1GoalPost.body.setAllowGravity(false);
+		this.container_game_play.add(this.player1GoalPost)
 
-		this.player2GoalPost = this.physics.add.image(8, 540, "goalPost");
+		this.player2GoalPost = this.physics.add.image(65, 540, "goal_post");
 		this.player2GoalPost.body.setImmovable(true);
 		this.player2GoalPost.body.setAllowGravity(false);
+		this.container_game_play.add(this.player2GoalPost)
+
 	}
 
 	checkGoal() {
@@ -244,19 +319,20 @@ class GamePlay extends Phaser.Scene {
 		let temp
 		switch (direction) {
 			case 'left':
-				temp = -100;
+				temp = 25;
 				break;
 			case 'right':
-				temp = 100;
+				temp = 1895;
 				break;
 		}
 
-		let tempBall = this.add.image(ballX, ballY, "gray_ball").setScale(this.oGameManager.ballInfo.mainBall.scale);
+		let tempBall = this.add.image(ballX, ballY, "green_ball").setScale(this.oGameManager.ballInfo.mainBall.scale);
+		this.container_game_play.add(tempBall);
 
 		this.tweens.add({
 			targets: tempBall,
-			x: ballX + temp,
-			y: ballY,
+			x: { from: ballX, to: temp },
+			y: 540,
 			duration: 150,
 			scaleX: { from: this.ball.scaleX, to: 0.1 },
 			scaleY: { from: this.ball.scaleY, to: 0.1 },
@@ -280,9 +356,9 @@ class GamePlay extends Phaser.Scene {
 		if (!this.isTimeOver) {
 
 			// display temp ball
-			let tempOwnBall = this.add.image(this.oGameManager.ballInfo.player1Ball.x, this.oGameManager.ballInfo.player1Ball.y, "blue_ball").setScale(this.oGameManager.ballInfo.player1Ball.scale)
-			let tempOppoBall = this.add.image(this.oGameManager.ballInfo.player2Ball.x, this.oGameManager.ballInfo.player2Ball.y, "red_ball").setScale(this.oGameManager.ballInfo.player2Ball.scale)
-			let tempMainBall = this.add.image(this.oGameManager.ballInfo.mainBall.x, this.oGameManager.ballInfo.mainBall.y, "gray_ball").setScale(this.oGameManager.ballInfo.mainBall.scale)
+			let tempOwnBall = this.add.image(this.oGameManager.ballInfo.player1Ball.x, this.oGameManager.ballInfo.player1Ball.y, "purple_ball").setScale(this.oGameManager.ballInfo.player1Ball.scale)
+			let tempOppoBall = this.add.image(this.oGameManager.ballInfo.player2Ball.x, this.oGameManager.ballInfo.player2Ball.y, "orange_ball").setScale(this.oGameManager.ballInfo.player2Ball.scale)
+			let tempMainBall = this.add.image(this.oGameManager.ballInfo.mainBall.x, this.oGameManager.ballInfo.mainBall.y, "green_ball").setScale(this.oGameManager.ballInfo.mainBall.scale)
 
 			let timeInterval = setInterval(() => {
 				this.txtPlayer1ScoreCard.setText(tempTime);
@@ -371,10 +447,11 @@ class GamePlay extends Phaser.Scene {
 	gameOver() {
 		this.isGameOver = true;
 
-		this.txtPlayer2ScoreCard.setVisible(false);
-		this.txtPlayer1ScoreCard.setVisible(false);
-
 		this.container_gameover_popup.setVisible(true);
+		this.container_game_play.setVisible(false);
+
+		this.txtPlayer1FinalScore.setText(this.score.player1Score);
+		this.txtPlayer2FinalScore.setText(this.score.player2Score);
 
 		if (this.score.player1Score > this.score.player2Score) {
 			this.txtWinner.setText('Player 1 Win')
@@ -383,10 +460,28 @@ class GamePlay extends Phaser.Scene {
 			this.txtWinner.setText('Player 2 Win')
 		}
 		else {
-			this.txtWinner.setText('Tie')
+			this.txtWinner.setText('Tie Game')
 		}
 
 	}
+
+	pointerOverTween(btn, initSclae) {
+		this.tweens.add({
+			targets: btn,
+			scaleX: initSclae + 0.05,
+			scaleY: initSclae + 0.05,
+			duration: 100
+		})
+	}
+	pointerOutTween(btn, initSclae) {
+		this.tweens.add({
+			targets: btn,
+			scaleX: initSclae,
+			scaleY: initSclae,
+			duration: 100
+		})
+	}
+
 
 	/* END-USER-CODE */
 }

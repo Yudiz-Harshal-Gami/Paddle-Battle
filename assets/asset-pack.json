@@ -2,9 +2,14 @@
     "section1": {
         "files": [
             {
-                "url": "assets/images/game-play/blue_ball.png",
+                "url": "assets/images/splash-screen/button.png",
                 "type": "image",
-                "key": "blue_ball"
+                "key": "button"
+            },
+            {
+                "url": "assets/images/game-play/game_background.png",
+                "type": "image",
+                "key": "game_background"
             },
             {
                 "url": "src/managers/GameManager.js",
@@ -17,19 +22,54 @@
                 "key": "GamePlay"
             },
             {
-                "url": "assets/images/game-play/goalPost.png",
+                "url": "assets/images/game-play/goal_post.png",
                 "type": "image",
-                "key": "goalPost"
+                "key": "goal_post"
             },
             {
-                "url": "assets/images/game-play/gray_ball.png",
+                "url": "assets/images/game-play/green_ball.png",
                 "type": "image",
-                "key": "gray_ball"
+                "key": "green_ball"
             },
             {
-                "url": "assets/images/game-play/red_ball.png",
+                "url": "assets/images/splash-screen/music.png",
                 "type": "image",
-                "key": "red_ball"
+                "key": "music"
+            },
+            {
+                "url": "assets/images/splash-screen/music_off.png",
+                "type": "image",
+                "key": "music_off"
+            },
+            {
+                "url": "assets/images/game-play/orange_ball.png",
+                "type": "image",
+                "key": "orange_ball"
+            },
+            {
+                "url": "assets/images/game-play/purple_ball.png",
+                "type": "image",
+                "key": "purple_ball"
+            },
+            {
+                "url": "src/managers/SoundManager.js",
+                "type": "script",
+                "key": "SoundManager"
+            },
+            {
+                "url": "assets/images/game-play/stick.png",
+                "type": "image",
+                "key": "stick"
+            },
+            {
+                "url": "assets/images/splash-screen/volume.png",
+                "type": "image",
+                "key": "volume"
+            },
+            {
+                "url": "assets/images/splash-screen/volume_off.png",
+                "type": "image",
+                "key": "volume_off"
             }
         ]
     },

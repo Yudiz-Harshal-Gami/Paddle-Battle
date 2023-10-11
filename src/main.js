@@ -5,7 +5,7 @@ window.addEventListener('load', function () {
 		width: 1920,
 		height: 1080,
 		type: Phaser.AUTO,
-		backgroundColor: "#242424",
+		backgroundColor: "#010101",
 		scale: {
 			mode: Phaser.Scale.FIT,
 			autoCenter: Phaser.Scale.CENTER_BOTH
@@ -13,7 +13,7 @@ window.addEventListener('load', function () {
 		physics: {
 			default: 'arcade',
 			arcade: {
-				gravity: { y: 500 },
+				gravity: { y: 1000 },
 				// debug: true
 			}
 		}
