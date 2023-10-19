@@ -80,6 +80,14 @@ class Level extends Phaser.Scene {
 
 		this.editorCreate();
 
+		this.oGameManager = new GameManager(this);
+		this.oSoundManager = new SoundManager(this);
+
+		this.soundData = {
+			gameSound: true,
+			gameMusic: true
+		}
+
 		this.tweenLogo = this.tweens.add({
 			targets: this.logo,
 			scaleX: 1.02,
@@ -95,8 +103,7 @@ class Level extends Phaser.Scene {
 		this.btnVolume.setInteractive();
 
 		this.btnPlay.on('pointerdown', () => {
-			this.scene.stop('Level');
-			this.scene.start('GamePlay');
+			this.scene.start('GamePlay', this.soundData);
 		})
 		this.btnPlay.on('pointerover', () => {
 			this.pointerOverTween(this.btnPlay, 1)

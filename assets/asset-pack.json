@@ -2,6 +2,18 @@
     "section1": {
         "files": [
             {
+                "url": [
+                    "assets/audio/ball-bounce.mp3"
+                ],
+                "type": "audio",
+                "key": "ball-bounce"
+            },
+            {
+                "url": "assets/images/game-over/black_screen.png",
+                "type": "image",
+                "key": "black_screen"
+            },
+            {
                 "url": "assets/images/splash-screen/button.png",
                 "type": "image",
                 "key": "button"
@@ -15,6 +27,16 @@
                 "url": "src/managers/GameManager.js",
                 "type": "script",
                 "key": "GameManager"
+            },
+            {
+                "url": "assets/images/game-over/gameover_box.png",
+                "type": "image",
+                "key": "gameover_box"
+            },
+            {
+                "url": "assets/images/game-over/gameover_text.png",
+                "type": "image",
+                "key": "gameover_text"
             },
             {
                 "url": "src/scenes/GamePlay.js",
@@ -52,6 +74,11 @@
                 "key": "purple_ball"
             },
             {
+                "url": "assets/images/game-over/score_text.png",
+                "type": "image",
+                "key": "score_text"
+            },
+            {
                 "url": "src/managers/SoundManager.js",
                 "type": "script",
                 "key": "SoundManager"
@@ -70,6 +97,13 @@
                 "url": "assets/images/splash-screen/volume_off.png",
                 "type": "image",
                 "key": "volume_off"
+            },
+            {
+                "url": [
+                    "assets/audio/whistle.mp3"
+                ],
+                "type": "audio",
+                "key": "whistle"
             }
         ]
     },

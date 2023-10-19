@@ -87,16 +87,38 @@
             "visible": false,
             "list": [
                 {
+                    "type": "Image",
+                    "id": "2349b995-45db-45f0-ba23-0e1ba971853c",
+                    "label": "black_screen",
+                    "components": [],
+                    "texture": {
+                        "key": "black_screen"
+                    },
+                    "x": 960,
+                    "y": 540
+                },
+                {
+                    "type": "Image",
+                    "id": "357b1007-ef4f-4ad5-96e9-569ede4ff73f",
+                    "label": "gameover_box",
+                    "components": [],
+                    "texture": {
+                        "key": "gameover_box"
+                    },
+                    "x": 960,
+                    "y": 507
+                },
+                {
                     "type": "Text",
                     "id": "0e86eeea-850e-4d95-899e-e721ba45baa1",
                     "label": "txtWinner",
                     "scope": "CLASS",
                     "components": [],
                     "x": 960,
-                    "y": 351,
+                    "y": 387,
                     "originX": 0.5,
                     "originY": 0.5,
-                    "fontSize": "60px"
+                    "fontSize": "35px"
                 },
                 {
                     "type": "Image",
@@ -108,7 +130,7 @@
                         "key": "button"
                     },
                     "x": 960,
-                    "y": 655,
+                    "y": 836,
                     "scaleX": 0.8,
                     "scaleY": 0.8
                 },
@@ -119,7 +141,7 @@
                     "scope": "CLASS",
                     "components": [],
                     "x": 960,
-                    "y": 653,
+                    "y": 834,
                     "originX": 0.5,
                     "originY": 0.5,
                     "text": "Home",
@@ -133,11 +155,11 @@
                     "scope": "CLASS",
                     "components": [],
                     "x": 924,
-                    "y": 492,
+                    "y": 604,
                     "originX": 1,
                     "originY": 0.5,
-                    "fontSize": "80px",
-                    "color": "#610480"
+                    "fontSize": "120px",
+                    "color": "#C000FF"
                 },
                 {
                     "type": "Text",
@@ -146,10 +168,10 @@
                     "scope": "CLASS",
                     "components": [],
                     "x": 996,
-                    "y": 492,
+                    "y": 604,
                     "originY": 0.5,
-                    "fontSize": "80px",
-                    "color": "#804500"
+                    "fontSize": "120px",
+                    "color": "#FF8900"
                 },
                 {
                     "type": "Text",
@@ -157,11 +179,33 @@
                     "label": "text_1",
                     "components": [],
                     "x": 960,
-                    "y": 492,
+                    "y": 604,
                     "originX": 0.5,
                     "originY": 0.5,
                     "text": "-",
-                    "fontSize": "80px"
+                    "fontSize": "120px"
+                },
+                {
+                    "type": "Image",
+                    "id": "f48341d8-7d06-450c-b156-08338f4c1b41",
+                    "label": "score_text",
+                    "components": [],
+                    "texture": {
+                        "key": "score_text"
+                    },
+                    "x": 960,
+                    "y": 487
+                },
+                {
+                    "type": "Image",
+                    "id": "85fafbd8-5df0-45cd-9ac4-0b907b4de692",
+                    "label": "gameover_text",
+                    "components": [],
+                    "texture": {
+                        "key": "gameover_text"
+                    },
+                    "x": 960,
+                    "y": 199
                 }
             ]
         }
