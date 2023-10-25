@@ -11,14 +11,28 @@
     "displayList": [
         {
             "type": "Image",
-            "id": "e97d7538-f4a4-4fa0-82e4-b9fa9276b571",
-            "label": "game_background",
+            "id": "d5b87378-d78f-41fb-a834-0af9b179cced",
+            "label": "player1_background",
+            "scope": "CLASS",
             "components": [],
             "texture": {
-                "key": "game_background"
+                "key": "green_background"
             },
-            "x": 960,
+            "x": 490,
             "y": 540
+        },
+        {
+            "type": "Image",
+            "id": "5f33c6fb-b35e-4cb6-b4b1-4f11b794d99f",
+            "label": "player2_background",
+            "scope": "CLASS",
+            "components": [],
+            "texture": {
+                "key": "blue_background"
+            },
+            "x": 1429,
+            "y": 540,
+            "scaleX": -1
         },
         {
             "type": "Container",
@@ -40,6 +54,18 @@
                 },
                 {
                     "type": "Text",
+                    "id": "9e63a68f-88c2-450f-94ca-8fcec9931e96",
+                    "label": "txtTimer",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": 960,
+                    "y": 121,
+                    "originX": 0.5,
+                    "originY": 0.5,
+                    "fontSize": "38px"
+                },
+                {
+                    "type": "Text",
                     "id": "009527b7-ac92-4cb5-834e-13964513f44d",
                     "label": "txtPlayer1ScoreCard",
                     "scope": "CLASS",
@@ -48,6 +74,11 @@
                     "y": 540,
                     "originX": 0.5,
                     "originY": 0.5,
+                    "alpha": 0.5,
+                    "alphaTopLeft": 0.5,
+                    "alphaTopRight": 0.5,
+                    "alphaBottomLeft": 0.5,
+                    "alphaBottomRight": 0.5,
                     "fontSize": "400px",
                     "color": "#610480"
                 },
@@ -61,20 +92,88 @@
                     "y": 540,
                     "originX": 0.5,
                     "originY": 0.5,
+                    "alpha": 0.5,
+                    "alphaTopLeft": 0.5,
+                    "alphaTopRight": 0.5,
+                    "alphaBottomLeft": 0.5,
+                    "alphaBottomRight": 0.5,
                     "fontSize": "400px",
                     "color": "#804500"
                 },
                 {
-                    "type": "Text",
-                    "id": "9e63a68f-88c2-450f-94ca-8fcec9931e96",
-                    "label": "txtTimer",
+                    "type": "Image",
+                    "id": "082204dd-ad0c-47d6-a189-22a690a67b13",
+                    "label": "player1_controller",
                     "scope": "CLASS",
                     "components": [],
-                    "x": 960,
-                    "y": 121,
-                    "originX": 0.5,
-                    "originY": 0.5,
-                    "fontSize": "38px"
+                    "texture": {
+                        "key": "green_controller_aswd"
+                    },
+                    "x": 406,
+                    "y": 515
+                },
+                {
+                    "type": "Image",
+                    "id": "1e9ad749-1e60-4253-959c-a9cd3ad5df8e",
+                    "label": "player2_controller",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "blue_controller_arrows"
+                    },
+                    "x": 1520,
+                    "y": 495
+                },
+                {
+                    "type": "Image",
+                    "id": "156dbd6e-c4eb-49ce-86ef-32b6bc310ec2",
+                    "label": "btnMusic",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "music"
+                    },
+                    "x": 210,
+                    "y": 117,
+                    "scaleX": 0.8,
+                    "scaleY": 0.8
+                },
+                {
+                    "type": "Image",
+                    "id": "9717223b-3966-4ecc-aa16-d50ac365957a",
+                    "label": "btnVolume",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "volume"
+                    },
+                    "x": 121,
+                    "y": 117,
+                    "scaleX": 0.8,
+                    "scaleY": 0.8
+                },
+                {
+                    "type": "Image",
+                    "id": "00b4fc9a-0f6a-43f9-89c1-138ad51b7519",
+                    "label": "btnGameQuit",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "cross"
+                    },
+                    "x": 1808,
+                    "y": 119,
+                    "scaleX": 0.8,
+                    "scaleY": 0.8,
+                    "angle": 45
+                },
+                {
+                    "type": "Container",
+                    "id": "b5c26423-1ef3-49c9-84b5-838089c51bcc",
+                    "label": "container_ball_particles",
+                    "scope": "CLASS",
+                    "components": [],
+                    "list": []
                 }
             ]
         },
@@ -99,14 +198,28 @@
                 },
                 {
                     "type": "Image",
-                    "id": "357b1007-ef4f-4ad5-96e9-569ede4ff73f",
-                    "label": "gameover_box",
+                    "id": "de68822d-a638-4ebb-a84f-d61c011cf570",
+                    "label": "player2_scoreboard",
+                    "scope": "CLASS",
                     "components": [],
                     "texture": {
-                        "key": "gameover_box"
+                        "key": "blue_scoreboard"
                     },
-                    "x": 960,
-                    "y": 507
+                    "x": 1142,
+                    "y": 500,
+                    "scaleX": -1
+                },
+                {
+                    "type": "Image",
+                    "id": "9f3280a0-1177-4113-9bbb-b5047851877b",
+                    "label": "player1_scoreboard",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "green_scoreboard"
+                    },
+                    "x": 777,
+                    "y": 500
                 },
                 {
                     "type": "Text",
@@ -121,34 +234,6 @@
                     "fontSize": "35px"
                 },
                 {
-                    "type": "Image",
-                    "id": "16463029-4e14-4be5-a837-8bbfc43c0ebb",
-                    "label": "btnGameOver",
-                    "scope": "CLASS",
-                    "components": [],
-                    "texture": {
-                        "key": "button"
-                    },
-                    "x": 960,
-                    "y": 836,
-                    "scaleX": 0.8,
-                    "scaleY": 0.8
-                },
-                {
-                    "type": "Text",
-                    "id": "d986042b-450c-4771-8bed-4e5dec6eac44",
-                    "label": "txtGameOver",
-                    "scope": "CLASS",
-                    "components": [],
-                    "x": 960,
-                    "y": 834,
-                    "originX": 0.5,
-                    "originY": 0.5,
-                    "text": "Home",
-                    "fontSize": "55px",
-                    "color": "#ffffffff"
-                },
-                {
                     "type": "Text",
                     "id": "a33f9db3-e473-4769-bb71-e5af0f026d7b",
                     "label": "txtPlayer1FinalScore",
@@ -158,6 +243,11 @@
                     "y": 604,
                     "originX": 1,
                     "originY": 0.5,
+                    "alpha": 0.7,
+                    "alphaTopLeft": 0.7,
+                    "alphaTopRight": 0.7,
+                    "alphaBottomLeft": 0.7,
+                    "alphaBottomRight": 0.7,
                     "fontSize": "120px",
                     "color": "#C000FF"
                 },
@@ -170,6 +260,11 @@
                     "x": 996,
                     "y": 604,
                     "originY": 0.5,
+                    "alpha": 0.7,
+                    "alphaTopLeft": 0.7,
+                    "alphaTopRight": 0.7,
+                    "alphaBottomLeft": 0.7,
+                    "alphaBottomRight": 0.7,
                     "fontSize": "120px",
                     "color": "#FF8900"
                 },
@@ -206,6 +301,138 @@
                     },
                     "x": 960,
                     "y": 199
+                },
+                {
+                    "type": "Container",
+                    "id": "51e4ddbf-ad26-4670-973e-1f2301a394a9",
+                    "label": "container_player2_button",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": 1160,
+                    "y": 836,
+                    "list": [
+                        {
+                            "type": "Image",
+                            "id": "ef4be915-0e7d-4555-98b6-158d7251d8a3",
+                            "label": "btnReplayGame",
+                            "scope": "CLASS",
+                            "components": [],
+                            "texture": {
+                                "key": "button"
+                            },
+                            "scaleX": 0.8,
+                            "scaleY": 0.8,
+                            "alpha": 0.01,
+                            "alphaTopLeft": 0.01,
+                            "alphaTopRight": 0.01,
+                            "alphaBottomLeft": 0.01,
+                            "alphaBottomRight": 0.01
+                        },
+                        {
+                            "type": "Text",
+                            "id": "3dd7405e-cfef-4bca-b74d-09555acec744",
+                            "label": "txtReplayGame",
+                            "scope": "CLASS",
+                            "components": [],
+                            "originX": 0.5,
+                            "originY": 0.5,
+                            "text": "Replay",
+                            "fontSize": "50px",
+                            "color": "#ffffffff"
+                        },
+                        {
+                            "type": "Image",
+                            "id": "3196ffcf-70cb-4bf2-8c21-a9b9a1a6605a",
+                            "label": "btnReplayGamePlayer1",
+                            "scope": "CLASS",
+                            "components": [],
+                            "texture": {
+                                "key": "green_button"
+                            },
+                            "x": -90,
+                            "scaleX": 0.8,
+                            "scaleY": 0.8
+                        },
+                        {
+                            "type": "Image",
+                            "id": "06742543-fbc2-4760-b304-e3bc5f4e7dd7",
+                            "label": "btnReplayGamePlayer2",
+                            "scope": "CLASS",
+                            "components": [],
+                            "texture": {
+                                "key": "blue_button"
+                            },
+                            "x": 90,
+                            "scaleX": -0.8,
+                            "scaleY": 0.8
+                        }
+                    ]
+                },
+                {
+                    "type": "Container",
+                    "id": "67006572-42d6-498d-9b9b-870b83b4a9d2",
+                    "label": "container_player1_button",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": 760,
+                    "y": 834,
+                    "list": [
+                        {
+                            "type": "Image",
+                            "id": "16463029-4e14-4be5-a837-8bbfc43c0ebb",
+                            "label": "btnGameOver",
+                            "scope": "CLASS",
+                            "components": [],
+                            "texture": {
+                                "key": "button"
+                            },
+                            "scaleX": 0.8,
+                            "scaleY": 0.8,
+                            "alpha": 0.01,
+                            "alphaTopLeft": 0.01,
+                            "alphaTopRight": 0.01,
+                            "alphaBottomLeft": 0.01,
+                            "alphaBottomRight": 0.01
+                        },
+                        {
+                            "type": "Text",
+                            "id": "d986042b-450c-4771-8bed-4e5dec6eac44",
+                            "label": "txtGameOver",
+                            "scope": "CLASS",
+                            "components": [],
+                            "originX": 0.5,
+                            "originY": 0.5,
+                            "text": "Home",
+                            "fontSize": "55px",
+                            "color": "#ffffffff"
+                        },
+                        {
+                            "type": "Image",
+                            "id": "ec40e2b4-6f68-46e9-bb42-f1d472400f53",
+                            "label": "btnGameOverPlayer1",
+                            "scope": "CLASS",
+                            "components": [],
+                            "texture": {
+                                "key": "green_button"
+                            },
+                            "x": -90,
+                            "scaleX": 0.8,
+                            "scaleY": 0.8
+                        },
+                        {
+                            "type": "Image",
+                            "id": "d9ae3ca3-9aa4-4495-9442-e61bf451d689",
+                            "label": "btnGameOverPlayer2",
+                            "scope": "CLASS",
+                            "components": [],
+                            "texture": {
+                                "key": "blue_button"
+                            },
+                            "x": 90,
+                            "scaleX": -0.8,
+                            "scaleY": 0.8
+                        }
+                    ]
                 }
             ]
         }

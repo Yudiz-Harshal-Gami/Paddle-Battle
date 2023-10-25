@@ -2,26 +2,32 @@ class GameManager {
     constructor(scene) {
         this.scene = scene;
         this.gameTime = 120 // in second
+        this.gameStartCounter = 5
+        this.randomColorArray = ['purple', 'orange', 'red', 'blue', 'yellow', 'green'];
+        this.player1Color;
+        this.player2Color;
+        this.gameSound = true;
+        this.gameMusic = true;
         this.ballInfo = {
             player1Ball: {
-                x: 300,
-                y: 540,
+                x: 400,
+                y: 540, // 495
                 scale: 1,
                 bounce: 0.7,
                 mass: 1,
-                maxVelocity: 1000,
-                accelerationX: 1000,
-                accelerationY: 1800,
+                maxVelocity: 1100,
+                accelerationX: 1100,
+                accelerationY: 2000,
             },
             player2Ball: {
-                x: 1620,
+                x: 1520,
                 y: 540,
                 scale: 1,
                 bounce: 0.7,
                 mass: 1,
-                maxVelocity: 1000,
-                accelerationX: 1000,
-                accelerationY: 1800,
+                maxVelocity: 1100,
+                accelerationX: 1100,
+                accelerationY: 2000,
             },
             mainBall: {
                 x: 960,
@@ -32,5 +38,23 @@ class GameManager {
                 maxVelocity: 750,
             }
         }
+        this.setPlayerColor();
+    }
+
+    getRandomColor() {
+        return this.randomColorArray[Math.floor(Math.random() * this.randomColorArray.length)];
+    }
+
+    setPlayerColor() {
+        this.player1Color = this.getRandomColor();
+
+        let tempColor2 = () => {
+            this.player2Color = this.getRandomColor();
+            if (this.player1Color === this.player2Color) {
+                tempColor2();
+            }
+        };
+        tempColor2();
+
     }
 }

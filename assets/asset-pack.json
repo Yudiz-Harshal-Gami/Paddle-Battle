@@ -3,10 +3,22 @@
         "files": [
             {
                 "url": [
-                    "assets/audio/ball-bounce.mp3"
+                    "assets/audio/background.mp3"
                 ],
                 "type": "audio",
-                "key": "ball-bounce"
+                "key": "backgroundMusic"
+            },
+            {
+                "url": [
+                    "assets/audio/ballBounce.mp3"
+                ],
+                "type": "audio",
+                "key": "ballBounceSound"
+            },
+            {
+                "url": "assets/images/game-play/ballParticleImage.png",
+                "type": "image",
+                "key": "ballParticleImage"
             },
             {
                 "url": "assets/images/game-over/black_screen.png",
@@ -14,19 +26,56 @@
                 "key": "black_screen"
             },
             {
+                "url": "assets/images/game-play/blue/blue_background.png",
+                "type": "image",
+                "key": "blue_background"
+            },
+            {
+                "url": "assets/images/game-play/blue/blue_ball.png",
+                "type": "image",
+                "key": "blue_ball"
+            },
+            {
+                "url": "assets/images/game-play/blue/blue_button.png",
+                "type": "image",
+                "key": "blue_button"
+            },
+            {
+                "url": "assets/images/game-play/blue/blue_controller_arrows.png",
+                "type": "image",
+                "key": "blue_controller_arrows"
+            },
+            {
+                "url": "assets/images/game-play/blue/blue_controller_aswd.png",
+                "type": "image",
+                "key": "blue_controller_aswd"
+            },
+            {
+                "url": "assets/images/game-play/blue/blue_scoreboard.png",
+                "type": "image",
+                "key": "blue_scoreboard"
+            },
+            {
                 "url": "assets/images/splash-screen/button.png",
                 "type": "image",
                 "key": "button"
             },
             {
+                "url": [
+                    "assets/audio/clickSound.mp3"
+                ],
+                "type": "audio",
+                "key": "clickSound"
+            },
+            {
+                "url": "assets/images/game-play/cross.png",
+                "type": "image",
+                "key": "cross"
+            },
+            {
                 "url": "assets/images/game-play/game_background.png",
                 "type": "image",
                 "key": "game_background"
-            },
-            {
-                "url": "src/managers/GameManager.js",
-                "type": "script",
-                "key": "GameManager"
             },
             {
                 "url": "assets/images/game-over/gameover_box.png",
@@ -49,9 +98,41 @@
                 "key": "goal_post"
             },
             {
-                "url": "assets/images/game-play/green_ball.png",
+                "url": [
+                    "assets/audio/goalSound.mp3"
+                ],
+                "type": "audio",
+                "key": "goalSound"
+            },
+            {
+                "url": "assets/images/game-play/green/green_background.png",
+                "type": "image",
+                "key": "green_background"
+            },
+            {
+                "url": "assets/images/game-play/green/green_ball.png",
                 "type": "image",
                 "key": "green_ball"
+            },
+            {
+                "url": "assets/images/game-play/green/green_button.png",
+                "type": "image",
+                "key": "green_button"
+            },
+            {
+                "url": "assets/images/game-play/green/green_controller_arrows.png",
+                "type": "image",
+                "key": "green_controller_arrows"
+            },
+            {
+                "url": "assets/images/game-play/green/green_controller_aswd.png",
+                "type": "image",
+                "key": "green_controller_aswd"
+            },
+            {
+                "url": "assets/images/game-play/green/green_scoreboard.png",
+                "type": "image",
+                "key": "green_scoreboard"
             },
             {
                 "url": "assets/images/splash-screen/music.png",
@@ -64,14 +145,99 @@
                 "key": "music_off"
             },
             {
-                "url": "assets/images/game-play/orange_ball.png",
+                "url": "assets/images/game-play/orange/orange_background.png",
+                "type": "image",
+                "key": "orange_background"
+            },
+            {
+                "url": "assets/images/game-play/orange/orange_ball.png",
                 "type": "image",
                 "key": "orange_ball"
             },
             {
-                "url": "assets/images/game-play/purple_ball.png",
+                "url": "assets/images/game-play/orange/orange_button.png",
+                "type": "image",
+                "key": "orange_button"
+            },
+            {
+                "url": "assets/images/game-play/orange/orange_controller_arrows.png",
+                "type": "image",
+                "key": "orange_controller_arrows"
+            },
+            {
+                "url": "assets/images/game-play/orange/orange_controller_aswd.png",
+                "type": "image",
+                "key": "orange_controller_aswd"
+            },
+            {
+                "url": "assets/images/game-play/orange/orange_scoreboard.png",
+                "type": "image",
+                "key": "orange_scoreboard"
+            },
+            {
+                "url": "assets/images/game-play/purple/purple_background.png",
+                "type": "image",
+                "key": "purple_background"
+            },
+            {
+                "url": "assets/images/game-play/purple/purple_ball.png",
                 "type": "image",
                 "key": "purple_ball"
+            },
+            {
+                "url": "assets/images/game-play/purple/purple_button.png",
+                "type": "image",
+                "key": "purple_button"
+            },
+            {
+                "url": "assets/images/game-play/purple/purple_controller_arrows.png",
+                "type": "image",
+                "key": "purple_controller_arrows"
+            },
+            {
+                "url": "assets/images/game-play/purple/purple_controller_aswd.png",
+                "type": "image",
+                "key": "purple_controller_aswd"
+            },
+            {
+                "url": "assets/images/game-play/purple/purple_scoreboard.png",
+                "type": "image",
+                "key": "purple_scoreboard"
+            },
+            {
+                "url": "assets/images/game-play/red/red_background.png",
+                "type": "image",
+                "key": "red_background"
+            },
+            {
+                "url": "assets/images/game-play/red/red_ball.png",
+                "type": "image",
+                "key": "red_ball"
+            },
+            {
+                "url": "assets/images/game-play/red/red_button.png",
+                "type": "image",
+                "key": "red_button"
+            },
+            {
+                "url": "assets/images/game-play/red/red_controller_arrows.png",
+                "type": "image",
+                "key": "red_controller_arrows"
+            },
+            {
+                "url": "assets/images/game-play/red/red_controller_aswd.png",
+                "type": "image",
+                "key": "red_controller_aswd"
+            },
+            {
+                "url": "assets/images/game-play/red/red_scoreboard.png",
+                "type": "image",
+                "key": "red_scoreboard"
+            },
+            {
+                "url": "assets/images/game-play/rewind.png",
+                "type": "image",
+                "key": "rewind"
             },
             {
                 "url": "assets/images/game-over/score_text.png",
@@ -89,6 +255,13 @@
                 "key": "stick"
             },
             {
+                "url": [
+                    "assets/audio/timer.mp3"
+                ],
+                "type": "audio",
+                "key": "timerSound"
+            },
+            {
                 "url": "assets/images/splash-screen/volume.png",
                 "type": "image",
                 "key": "volume"
@@ -103,7 +276,44 @@
                     "assets/audio/whistle.mp3"
                 ],
                 "type": "audio",
-                "key": "whistle"
+                "key": "whistleSound"
+            },
+            {
+                "url": [
+                    "assets/audio/winner.mp3"
+                ],
+                "type": "audio",
+                "key": "winnerSound"
+            },
+            {
+                "url": "assets/images/game-play/yellow/yellow_background.png",
+                "type": "image",
+                "key": "yellow_background"
+            },
+            {
+                "url": "assets/images/game-play/yellow/yellow_ball.png",
+                "type": "image",
+                "key": "yellow_ball"
+            },
+            {
+                "url": "assets/images/game-play/yellow/yellow_button.png",
+                "type": "image",
+                "key": "yellow_button"
+            },
+            {
+                "url": "assets/images/game-play/yellow/yellow_controller_arrows.png",
+                "type": "image",
+                "key": "yellow_controller_arrows"
+            },
+            {
+                "url": "assets/images/game-play/yellow/yellow_controller_aswd.png",
+                "type": "image",
+                "key": "yellow_controller_aswd"
+            },
+            {
+                "url": "assets/images/game-play/yellow/yellow_scoreboard.png",
+                "type": "image",
+                "key": "yellow_scoreboard"
             }
         ]
     },

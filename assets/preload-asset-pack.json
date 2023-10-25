@@ -2,14 +2,144 @@
     "section1": {
         "files": [
             {
-                "url": "assets/images/splash-screen/logo.png",
+                "url": "assets/images/splash-screen/blue/blue_battle_text.png",
                 "type": "image",
-                "key": "logo"
+                "key": "blue_battle_text"
             },
             {
-                "url": "assets/images/splash-screen/splash_background.png",
+                "url": "assets/images/splash-screen/blue/blue_border.png",
                 "type": "image",
-                "key": "splash_background"
+                "key": "blue_border"
+            },
+            {
+                "url": "assets/images/splash-screen/blue/blue_colour_text.png",
+                "type": "image",
+                "key": "blue_colour_text"
+            },
+            {
+                "url": "assets/images/splash-screen/blue/blue_splash.png",
+                "type": "image",
+                "key": "blue_splash"
+            },
+            {
+                "url": "assets/images/game-play/green_ball.png",
+                "type": "image",
+                "key": "game_ball"
+            },
+            {
+                "url": "src/managers/GameManager.js",
+                "type": "script",
+                "key": "GameManager"
+            },
+            {
+                "url": "assets/images/splash-screen/green/green_battle_text.png",
+                "type": "image",
+                "key": "green_battle_text"
+            },
+            {
+                "url": "assets/images/splash-screen/green/green_border.png",
+                "type": "image",
+                "key": "green_border"
+            },
+            {
+                "url": "assets/images/splash-screen/green/green_colour_text.png",
+                "type": "image",
+                "key": "green_colour_text"
+            },
+            {
+                "url": "assets/images/splash-screen/green/green_splash.png",
+                "type": "image",
+                "key": "green_splash"
+            },
+            {
+                "url": "src/managers/InputManager.js",
+                "type": "script",
+                "key": "InputManager"
+            },
+            {
+                "url": "assets/images/splash-screen/orange/orange_battle_text.png",
+                "type": "image",
+                "key": "orange_battle_text"
+            },
+            {
+                "url": "assets/images/splash-screen/orange/orange_border.png",
+                "type": "image",
+                "key": "orange_border"
+            },
+            {
+                "url": "assets/images/splash-screen/orange/orange_colour_text.png",
+                "type": "image",
+                "key": "orange_colour_text"
+            },
+            {
+                "url": "assets/images/splash-screen/orange/orange_splash.png",
+                "type": "image",
+                "key": "orange_splash"
+            },
+            {
+                "url": "assets/images/splash-screen/purple/purple_battle_text.png",
+                "type": "image",
+                "key": "purple_battle_text"
+            },
+            {
+                "url": "assets/images/splash-screen/purple/purple_border.png",
+                "type": "image",
+                "key": "purple_border"
+            },
+            {
+                "url": "assets/images/splash-screen/purple/purple_colour_text.png",
+                "type": "image",
+                "key": "purple_colour_text"
+            },
+            {
+                "url": "assets/images/splash-screen/purple/purple_splash.png",
+                "type": "image",
+                "key": "purple_splash"
+            },
+            {
+                "url": "assets/images/splash-screen/red/red_battle_text.png",
+                "type": "image",
+                "key": "red_battle_text"
+            },
+            {
+                "url": "assets/images/splash-screen/red/red_border.png",
+                "type": "image",
+                "key": "red_border"
+            },
+            {
+                "url": "assets/images/splash-screen/red/red_colour_text.png",
+                "type": "image",
+                "key": "red_colour_text"
+            },
+            {
+                "url": "assets/images/splash-screen/red/red_splash.png",
+                "type": "image",
+                "key": "red_splash"
+            },
+            {
+                "url": "src/managers/UiManager.js",
+                "type": "script",
+                "key": "UiManager"
+            },
+            {
+                "url": "assets/images/splash-screen/yellow/yellow_battle_text.png",
+                "type": "image",
+                "key": "yellow_battle_text"
+            },
+            {
+                "url": "assets/images/splash-screen/yellow/yellow_border.png",
+                "type": "image",
+                "key": "yellow_border"
+            },
+            {
+                "url": "assets/images/splash-screen/yellow/yellow_colour_text.png",
+                "type": "image",
+                "key": "yellow_colour_text"
+            },
+            {
+                "url": "assets/images/splash-screen/yellow/yellow_splash.png",
+                "type": "image",
+                "key": "yellow_splash"
             }
         ]
     },

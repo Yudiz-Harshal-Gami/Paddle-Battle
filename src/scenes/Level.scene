@@ -11,79 +11,6 @@
     "displayList": [
         {
             "type": "Image",
-            "id": "5730b9e1-a4cf-4dfd-9621-f938f2103a71",
-            "label": "splash_background",
-            "components": [],
-            "texture": {
-                "key": "splash_background"
-            },
-            "x": 960,
-            "y": 540
-        },
-        {
-            "type": "Image",
-            "id": "fbdadf13-d0c5-45e9-a7d2-de671276a80b",
-            "label": "logo",
-            "scope": "CLASS",
-            "components": [],
-            "texture": {
-                "key": "logo"
-            },
-            "x": 960,
-            "y": 234
-        },
-        {
-            "type": "Image",
-            "id": "6eaf8c15-6172-4061-aea7-2a8e5c50db3e",
-            "label": "btnPlay",
-            "scope": "CLASS",
-            "components": [],
-            "texture": {
-                "key": "button"
-            },
-            "x": 960,
-            "y": 509
-        },
-        {
-            "type": "Text",
-            "id": "40c8abef-f301-4712-b70a-c54af1452e04",
-            "label": "txtPlay",
-            "scope": "CLASS",
-            "components": [],
-            "x": 960,
-            "y": 509,
-            "originX": 0.5,
-            "originY": 0.5,
-            "text": "PLAY",
-            "fontSize": "60px"
-        },
-        {
-            "type": "Image",
-            "id": "2ffaea71-4411-491e-8b0b-3f7173e58f07",
-            "label": "btnHowToPlay",
-            "scope": "CLASS",
-            "components": [],
-            "texture": {
-                "key": "button"
-            },
-            "x": 960,
-            "y": 691
-        },
-        {
-            "type": "Text",
-            "id": "9fb4a5d8-dcf4-4d1f-9287-9c6e21d08980",
-            "label": "txtHowToPlay",
-            "scope": "CLASS",
-            "components": [],
-            "x": 960,
-            "y": 691,
-            "originX": 0.5,
-            "originY": 0.5,
-            "text": "HOW TO PLAY",
-            "fontSize": "60px"
-        },
-        {
-            "type": "Image",
             "id": "060ae5fd-4b95-4d32-b353-3a9f222fded4",
             "label": "btnVolume",
             "scope": "CLASS",
@@ -105,6 +32,528 @@
             },
             "x": 1030,
             "y": 857
+        },
+        {
+            "type": "Image",
+            "id": "8c45b2d5-8719-4505-8017-e72d0c589b1d",
+            "label": "player1_background_level",
+            "scope": "CLASS",
+            "components": [],
+            "texture": {
+                "key": "green_splash"
+            },
+            "x": 196,
+            "y": 599,
+            "scaleX": -1
+        },
+        {
+            "type": "Image",
+            "id": "5fd789ab-e73c-4692-9ffc-85f3692b6ac1",
+            "label": "player2_background_level",
+            "scope": "CLASS",
+            "components": [],
+            "texture": {
+                "key": "blue_splash"
+            },
+            "x": 1724,
+            "y": 599
+        },
+        {
+            "type": "Container",
+            "id": "1e44fff3-5308-43b4-8209-37079b85dda4",
+            "label": "container_level_scene_logo",
+            "scope": "CLASS",
+            "components": [],
+            "x": 960,
+            "y": 234,
+            "list": [
+                {
+                    "type": "Image",
+                    "id": "a69bb2bc-aef3-4279-af83-c180a5be9f81",
+                    "label": "player2_border_level",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "blue_border"
+                    },
+                    "x": 106,
+                    "y": -24,
+                    "scaleX": -1
+                },
+                {
+                    "type": "Image",
+                    "id": "40955145-aca8-4314-a259-6413116e50ed",
+                    "label": "player1_border_level",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "green_border"
+                    },
+                    "x": -106,
+                    "y": -25
+                },
+                {
+                    "type": "Image",
+                    "id": "f78a76be-e9df-4408-b413-8f82ceb39f34",
+                    "label": "txt_colour_level",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "green_colour_text"
+                    },
+                    "y": -31
+                },
+                {
+                    "type": "Image",
+                    "id": "8d1857b7-e9dc-44bd-997a-6360ab96e3c4",
+                    "label": "txt_battle_level",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "blue_battle_text"
+                    },
+                    "x": -2,
+                    "y": 55
+                },
+                {
+                    "type": "Image",
+                    "id": "53b250e5-7950-4fdf-82d2-8615ea04a0da",
+                    "label": "game_ball",
+                    "components": [],
+                    "texture": {
+                        "key": "game_ball"
+                    },
+                    "x": 1,
+                    "y": -101,
+                    "scaleX": 0.65,
+                    "scaleY": 0.65
+                }
+            ]
+        },
+        {
+            "type": "Container",
+            "id": "80ce0724-ddcf-4f3f-a5b0-498b4fa13a89",
+            "label": "container_how_to_play_button",
+            "scope": "CLASS",
+            "components": [],
+            "x": 960,
+            "y": 668,
+            "list": [
+                {
+                    "type": "Image",
+                    "id": "2ffaea71-4411-491e-8b0b-3f7173e58f07",
+                    "label": "btnHowToPlay",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "button"
+                    },
+                    "alpha": 0.0001,
+                    "alphaTopLeft": 0.0001,
+                    "alphaTopRight": 0.0001,
+                    "alphaBottomLeft": 0.0001,
+                    "alphaBottomRight": 0.0001
+                },
+                {
+                    "type": "Text",
+                    "id": "9fb4a5d8-dcf4-4d1f-9287-9c6e21d08980",
+                    "label": "txtHowToPlay",
+                    "scope": "CLASS",
+                    "components": [],
+                    "originX": 0.5,
+                    "originY": 0.5,
+                    "text": "HOW TO PLAY",
+                    "fontSize": "45px"
+                },
+                {
+                    "type": "Image",
+                    "id": "b10eba92-3d69-48ed-8605-33dc51f528db",
+                    "label": "btnHowToPlayPlayer2",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "blue_button"
+                    },
+                    "x": 93,
+                    "scaleX": -1
+                },
+                {
+                    "type": "Image",
+                    "id": "d2a118c2-2c12-462d-8277-89f6d5c2f751",
+                    "label": "btnHowToPlayPlayer1",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "green_button"
+                    },
+                    "x": -93
+                }
+            ]
+        },
+        {
+            "type": "Container",
+            "id": "b9d80842-2691-4570-9481-88f2a5fde5a7",
+            "label": "container_play_button",
+            "scope": "CLASS",
+            "components": [],
+            "x": 960,
+            "y": 506,
+            "list": [
+                {
+                    "type": "Image",
+                    "id": "6eaf8c15-6172-4061-aea7-2a8e5c50db3e",
+                    "label": "btnPlay",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "button"
+                    },
+                    "alpha": 0.001,
+                    "alphaTopLeft": 0.001,
+                    "alphaTopRight": 0.001,
+                    "alphaBottomLeft": 0.001,
+                    "alphaBottomRight": 0.001
+                },
+                {
+                    "type": "Text",
+                    "id": "40c8abef-f301-4712-b70a-c54af1452e04",
+                    "label": "txtPlay",
+                    "scope": "CLASS",
+                    "components": [],
+                    "originX": 0.5,
+                    "originY": 0.5,
+                    "text": "PLAY",
+                    "fontSize": "50px"
+                },
+                {
+                    "type": "Image",
+                    "id": "ed8420b5-1322-439a-8a19-a341cc06af1f",
+                    "label": "btnPlayPlayer2",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "blue_button"
+                    },
+                    "x": 94,
+                    "scaleX": -1
+                },
+                {
+                    "type": "Image",
+                    "id": "37375b1e-2341-4c33-8f55-2e1f8a3883d2",
+                    "label": "btnPlayPlayer1",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "green_button"
+                    },
+                    "x": -93
+                }
+            ]
+        },
+        {
+            "type": "Container",
+            "id": "cf9bad52-fc92-4609-a800-9ef67b6b924d",
+            "label": "container_timer_popup",
+            "scope": "CLASS",
+            "components": [],
+            "visible": false,
+            "list": [
+                {
+                    "type": "Image",
+                    "id": "954c21c6-0aa6-45d2-8c22-76acb7057e9a",
+                    "label": "popup_backgound",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "black_screen"
+                    },
+                    "x": 960,
+                    "y": 540
+                },
+                {
+                    "type": "Text",
+                    "id": "e6902d12-e5b3-4497-b3ff-9faa46007da6",
+                    "label": "text_1",
+                    "components": [],
+                    "x": 960,
+                    "y": 199,
+                    "originX": 0.5,
+                    "originY": 0.5,
+                    "text": "Select Game Time",
+                    "fontSize": "50px"
+                },
+                {
+                    "type": "Image",
+                    "id": "4834269b-ca89-47d5-b28c-46215b8761bf",
+                    "label": "btnClose",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "cross"
+                    },
+                    "x": 960,
+                    "y": 833,
+                    "scaleX": 0.8,
+                    "scaleY": 0.8,
+                    "angle": 45
+                },
+                {
+                    "type": "Container",
+                    "id": "02f3c93b-1f7e-4093-8fbb-869a7dee9b56",
+                    "label": "container_game_timer_4",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": 960,
+                    "y": 713,
+                    "list": [
+                        {
+                            "type": "Image",
+                            "id": "1b97a86c-9842-4bc3-8eeb-bb09e4a931a8",
+                            "label": "btn_game_timer_4",
+                            "scope": "CLASS",
+                            "components": [],
+                            "texture": {
+                                "key": "button"
+                            },
+                            "scaleX": 0.56,
+                            "scaleY": 0.6,
+                            "alpha": 0.0001,
+                            "alphaTopLeft": 0.0001,
+                            "alphaTopRight": 0.0001,
+                            "alphaBottomLeft": 0.0001,
+                            "alphaBottomRight": 0.0001
+                        },
+                        {
+                            "type": "Image",
+                            "id": "b10f5591-6fba-4a36-8ad4-670e42ca100c",
+                            "label": "player1_game_timer_4",
+                            "scope": "CLASS",
+                            "components": [],
+                            "texture": {
+                                "key": "green_button"
+                            },
+                            "x": -60,
+                            "scaleX": 0.6,
+                            "scaleY": 0.6
+                        },
+                        {
+                            "type": "Image",
+                            "id": "afba8295-6008-4868-a1fa-5939af22e8ac",
+                            "label": "player2_game_timer_4",
+                            "scope": "CLASS",
+                            "components": [],
+                            "texture": {
+                                "key": "blue_button"
+                            },
+                            "x": 60,
+                            "scaleX": -0.6,
+                            "scaleY": 0.6
+                        },
+                        {
+                            "type": "Text",
+                            "id": "3b160e9e-ec7d-4f44-9ecb-252adb4e42d3",
+                            "label": "text_5",
+                            "components": [],
+                            "originX": 0.5,
+                            "originY": 0.5,
+                            "text": "10 Minutes",
+                            "fontSize": "30px"
+                        }
+                    ]
+                },
+                {
+                    "type": "Container",
+                    "id": "f239b74e-a002-4ac8-b9aa-76460ba4b330",
+                    "label": "container_game_timer_3",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": 960,
+                    "y": 606,
+                    "list": [
+                        {
+                            "type": "Image",
+                            "id": "3e85c835-cf90-41c9-8aa0-1b8d4780f525",
+                            "label": "btn_game_timer_3",
+                            "scope": "CLASS",
+                            "components": [],
+                            "texture": {
+                                "key": "button"
+                            },
+                            "scaleX": 0.56,
+                            "scaleY": 0.6,
+                            "alpha": 0.0001,
+                            "alphaTopLeft": 0.0001,
+                            "alphaTopRight": 0.0001,
+                            "alphaBottomLeft": 0.0001,
+                            "alphaBottomRight": 0.0001
+                        },
+                        {
+                            "type": "Image",
+                            "id": "55f8cbd6-83a7-4b09-911b-a3de9b94a8c0",
+                            "label": "player1_game_timer_3",
+                            "scope": "CLASS",
+                            "components": [],
+                            "texture": {
+                                "key": "green_button"
+                            },
+                            "x": -60,
+                            "scaleX": 0.6,
+                            "scaleY": 0.6
+                        },
+                        {
+                            "type": "Image",
+                            "id": "b1c87de3-2042-4a08-9274-b15e9cce335a",
+                            "label": "player2_game_timer_3",
+                            "scope": "CLASS",
+                            "components": [],
+                            "texture": {
+                                "key": "blue_button"
+                            },
+                            "x": 60,
+                            "scaleX": -0.6,
+                            "scaleY": 0.6
+                        },
+                        {
+                            "type": "Text",
+                            "id": "e7255b87-4b4b-4f84-a441-0ab09bf8483e",
+                            "label": "text_4",
+                            "components": [],
+                            "originX": 0.5,
+                            "originY": 0.5,
+                            "text": "5 Minutes",
+                            "fontSize": "30px"
+                        }
+                    ]
+                },
+                {
+                    "type": "Container",
+                    "id": "6363c303-8df7-4732-9ffc-279f472fb73d",
+                    "label": "container_game_timer_2",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": 960,
+                    "y": 499,
+                    "list": [
+                        {
+                            "type": "Image",
+                            "id": "de03e035-a373-4165-a318-521289cd8b44",
+                            "label": "btn_game_timer_2",
+                            "scope": "CLASS",
+                            "components": [],
+                            "texture": {
+                                "key": "button"
+                            },
+                            "scaleX": 0.56,
+                            "scaleY": 0.6,
+                            "alpha": 0.0001,
+                            "alphaTopLeft": 0.0001,
+                            "alphaTopRight": 0.0001,
+                            "alphaBottomLeft": 0.0001,
+                            "alphaBottomRight": 0.0001
+                        },
+                        {
+                            "type": "Image",
+                            "id": "39154d69-19cd-4c7f-b0c1-676dd1ae0493",
+                            "label": "player1_game_timer_2",
+                            "scope": "CLASS",
+                            "components": [],
+                            "texture": {
+                                "key": "green_button"
+                            },
+                            "x": -60,
+                            "scaleX": 0.6,
+                            "scaleY": 0.6
+                        },
+                        {
+                            "type": "Image",
+                            "id": "fe4f28cb-60d5-4a57-8ccc-eee2ca588b24",
+                            "label": "player2_game_timer_2",
+                            "scope": "CLASS",
+                            "components": [],
+                            "texture": {
+                                "key": "blue_button"
+                            },
+                            "x": 60,
+                            "scaleX": -0.6,
+                            "scaleY": 0.6
+                        },
+                        {
+                            "type": "Text",
+                            "id": "f5ae90a0-3585-4b72-bc15-8ec7dea44bc0",
+                            "label": "text_3",
+                            "components": [],
+                            "originX": 0.5,
+                            "originY": 0.5,
+                            "text": "2 Minutes",
+                            "fontSize": "30px"
+                        }
+                    ]
+                },
+                {
+                    "type": "Container",
+                    "id": "e310f1d2-557e-4109-9228-8e1c93475935",
+                    "label": "container_game_timer_1",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": 960,
+                    "y": 392,
+                    "list": [
+                        {
+                            "type": "Image",
+                            "id": "4bc751a5-cd1b-46c9-a275-40230f2c74d1",
+                            "label": "btn_game_timer_1",
+                            "scope": "CLASS",
+                            "components": [],
+                            "texture": {
+                                "key": "button"
+                            },
+                            "scaleX": 0.56,
+                            "scaleY": 0.6,
+                            "alpha": 0.0001,
+                            "alphaTopLeft": 0.0001,
+                            "alphaTopRight": 0.0001,
+                            "alphaBottomLeft": 0.0001,
+                            "alphaBottomRight": 0.0001
+                        },
+                        {
+                            "type": "Image",
+                            "id": "e1153934-1334-45ec-99a3-bfbe6be1b4ab",
+                            "label": "player1_game_timer_1",
+                            "scope": "CLASS",
+                            "components": [],
+                            "texture": {
+                                "key": "green_button"
+                            },
+                            "x": -60,
+                            "scaleX": 0.6,
+                            "scaleY": 0.6
+                        },
+                        {
+                            "type": "Image",
+                            "id": "4d9b6df6-10af-4831-987c-2182a26f9865",
+                            "label": "player2_game_timer_1",
+                            "scope": "CLASS",
+                            "components": [],
+                            "texture": {
+                                "key": "blue_button"
+                            },
+                            "x": 60,
+                            "scaleX": -0.6,
+                            "scaleY": 0.6
+                        },
+                        {
+                            "type": "Text",
+                            "id": "37dfce48-6178-4065-a491-a32b09907ec8",
+                            "label": "text_2",
+                            "components": [],
+                            "originX": 0.5,
+                            "originY": 0.5,
+                            "text": "1 Minutes",
+                            "fontSize": "30px"
+                        }
+                    ]
+                }
+            ]
         }
     ],
     "plainObjects": [],

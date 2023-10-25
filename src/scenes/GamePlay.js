@@ -16,8 +16,12 @@ class GamePlay extends Phaser.Scene {
 	/** @returns {void} */
 	editorCreate() {
 
-		// game_background
-		this.add.image(960, 540, "game_background");
+		// player1_background
+		const player1_background = this.add.image(490, 540, "green_background");
+
+		// player2_background
+		const player2_background = this.add.image(1429, 540, "blue_background");
+		player2_background.scaleX = -1;
 
 		// container_game_play
 		const container_game_play = this.add.container(0, 0);
@@ -26,23 +30,64 @@ class GamePlay extends Phaser.Scene {
 		const stick = this.add.image(960, 540, "stick");
 		container_game_play.add(stick);
 
+		// txtTimer
+		const txtTimer = this.add.text(960, 121, "", {});
+		txtTimer.setOrigin(0.5, 0.5);
+		txtTimer.setStyle({ "fontSize": "38px" });
+		container_game_play.add(txtTimer);
+
 		// txtPlayer1ScoreCard
 		const txtPlayer1ScoreCard = this.add.text(570, 540, "", {});
 		txtPlayer1ScoreCard.setOrigin(0.5, 0.5);
+		txtPlayer1ScoreCard.alpha = 0.5;
+		txtPlayer1ScoreCard.alphaTopLeft = 0.5;
+		txtPlayer1ScoreCard.alphaTopRight = 0.5;
+		txtPlayer1ScoreCard.alphaBottomLeft = 0.5;
+		txtPlayer1ScoreCard.alphaBottomRight = 0.5;
 		txtPlayer1ScoreCard.setStyle({ "color": "#610480", "fontSize": "400px" });
 		container_game_play.add(txtPlayer1ScoreCard);
 
 		// txtPlayer2ScoreCard
 		const txtPlayer2ScoreCard = this.add.text(1350, 540, "", {});
 		txtPlayer2ScoreCard.setOrigin(0.5, 0.5);
+		txtPlayer2ScoreCard.alpha = 0.5;
+		txtPlayer2ScoreCard.alphaTopLeft = 0.5;
+		txtPlayer2ScoreCard.alphaTopRight = 0.5;
+		txtPlayer2ScoreCard.alphaBottomLeft = 0.5;
+		txtPlayer2ScoreCard.alphaBottomRight = 0.5;
 		txtPlayer2ScoreCard.setStyle({ "color": "#804500", "fontSize": "400px" });
 		container_game_play.add(txtPlayer2ScoreCard);
 
-		// txtTimer
-		const txtTimer = this.add.text(960, 121, "", {});
-		txtTimer.setOrigin(0.5, 0.5);
-		txtTimer.setStyle({ "fontSize": "38px" });
-		container_game_play.add(txtTimer);
+		// player1_controller
+		const player1_controller = this.add.image(406, 515, "green_controller_aswd");
+		container_game_play.add(player1_controller);
+
+		// player2_controller
+		const player2_controller = this.add.image(1520, 495, "blue_controller_arrows");
+		container_game_play.add(player2_controller);
+
+		// btnMusic
+		const btnMusic = this.add.image(210, 117, "music");
+		btnMusic.scaleX = 0.8;
+		btnMusic.scaleY = 0.8;
+		container_game_play.add(btnMusic);
+
+		// btnVolume
+		const btnVolume = this.add.image(121, 117, "volume");
+		btnVolume.scaleX = 0.8;
+		btnVolume.scaleY = 0.8;
+		container_game_play.add(btnVolume);
+
+		// btnGameQuit
+		const btnGameQuit = this.add.image(1808, 119, "cross");
+		btnGameQuit.scaleX = 0.8;
+		btnGameQuit.scaleY = 0.8;
+		btnGameQuit.angle = 45;
+		container_game_play.add(btnGameQuit);
+
+		// container_ball_particles
+		const container_ball_particles = this.add.container(0, 0);
+		container_game_play.add(container_ball_particles);
 
 		// container_gameover_popup
 		const container_gameover_popup = this.add.container(0, 0);
@@ -52,9 +97,14 @@ class GamePlay extends Phaser.Scene {
 		const black_screen = this.add.image(960, 540, "black_screen");
 		container_gameover_popup.add(black_screen);
 
-		// gameover_box
-		const gameover_box = this.add.image(960, 507, "gameover_box");
-		container_gameover_popup.add(gameover_box);
+		// player2_scoreboard
+		const player2_scoreboard = this.add.image(1142, 500, "blue_scoreboard");
+		player2_scoreboard.scaleX = -1;
+		container_gameover_popup.add(player2_scoreboard);
+
+		// player1_scoreboard
+		const player1_scoreboard = this.add.image(777, 500, "green_scoreboard");
+		container_gameover_popup.add(player1_scoreboard);
 
 		// txtWinner
 		const txtWinner = this.add.text(960, 387, "", {});
@@ -62,28 +112,25 @@ class GamePlay extends Phaser.Scene {
 		txtWinner.setStyle({ "fontSize": "35px" });
 		container_gameover_popup.add(txtWinner);
 
-		// btnGameOver
-		const btnGameOver = this.add.image(960, 836, "button");
-		btnGameOver.scaleX = 0.8;
-		btnGameOver.scaleY = 0.8;
-		container_gameover_popup.add(btnGameOver);
-
-		// txtGameOver
-		const txtGameOver = this.add.text(960, 834, "", {});
-		txtGameOver.setOrigin(0.5, 0.5);
-		txtGameOver.text = "Home";
-		txtGameOver.setStyle({ "color": "#ffffffff", "fontSize": "55px" });
-		container_gameover_popup.add(txtGameOver);
-
 		// txtPlayer1FinalScore
 		const txtPlayer1FinalScore = this.add.text(924, 604, "", {});
 		txtPlayer1FinalScore.setOrigin(1, 0.5);
+		txtPlayer1FinalScore.alpha = 0.7;
+		txtPlayer1FinalScore.alphaTopLeft = 0.7;
+		txtPlayer1FinalScore.alphaTopRight = 0.7;
+		txtPlayer1FinalScore.alphaBottomLeft = 0.7;
+		txtPlayer1FinalScore.alphaBottomRight = 0.7;
 		txtPlayer1FinalScore.setStyle({ "color": "#C000FF", "fontSize": "120px" });
 		container_gameover_popup.add(txtPlayer1FinalScore);
 
 		// txtPlayer2FinalScore
 		const txtPlayer2FinalScore = this.add.text(996, 604, "", {});
 		txtPlayer2FinalScore.setOrigin(0, 0.5);
+		txtPlayer2FinalScore.alpha = 0.7;
+		txtPlayer2FinalScore.alphaTopLeft = 0.7;
+		txtPlayer2FinalScore.alphaTopRight = 0.7;
+		txtPlayer2FinalScore.alphaBottomLeft = 0.7;
+		txtPlayer2FinalScore.alphaBottomRight = 0.7;
 		txtPlayer2FinalScore.setStyle({ "color": "#FF8900", "fontSize": "120px" });
 		container_gameover_popup.add(txtPlayer2FinalScore);
 
@@ -102,47 +149,169 @@ class GamePlay extends Phaser.Scene {
 		const gameover_text = this.add.image(960, 199, "gameover_text");
 		container_gameover_popup.add(gameover_text);
 
+		// container_player2_button
+		const container_player2_button = this.add.container(1160, 836);
+		container_gameover_popup.add(container_player2_button);
+
+		// btnReplayGame
+		const btnReplayGame = this.add.image(0, 0, "button");
+		btnReplayGame.scaleX = 0.8;
+		btnReplayGame.scaleY = 0.8;
+		btnReplayGame.alpha = 0.01;
+		btnReplayGame.alphaTopLeft = 0.01;
+		btnReplayGame.alphaTopRight = 0.01;
+		btnReplayGame.alphaBottomLeft = 0.01;
+		btnReplayGame.alphaBottomRight = 0.01;
+		container_player2_button.add(btnReplayGame);
+
+		// txtReplayGame
+		const txtReplayGame = this.add.text(0, 0, "", {});
+		txtReplayGame.setOrigin(0.5, 0.5);
+		txtReplayGame.text = "Replay";
+		txtReplayGame.setStyle({ "color": "#ffffffff", "fontSize": "50px" });
+		container_player2_button.add(txtReplayGame);
+
+		// btnReplayGamePlayer1
+		const btnReplayGamePlayer1 = this.add.image(-90, 0, "green_button");
+		btnReplayGamePlayer1.scaleX = 0.8;
+		btnReplayGamePlayer1.scaleY = 0.8;
+		container_player2_button.add(btnReplayGamePlayer1);
+
+		// btnReplayGamePlayer2
+		const btnReplayGamePlayer2 = this.add.image(90, 0, "blue_button");
+		btnReplayGamePlayer2.scaleX = -0.8;
+		btnReplayGamePlayer2.scaleY = 0.8;
+		container_player2_button.add(btnReplayGamePlayer2);
+
+		// container_player1_button
+		const container_player1_button = this.add.container(760, 834);
+		container_gameover_popup.add(container_player1_button);
+
+		// btnGameOver
+		const btnGameOver = this.add.image(0, 0, "button");
+		btnGameOver.scaleX = 0.8;
+		btnGameOver.scaleY = 0.8;
+		btnGameOver.alpha = 0.01;
+		btnGameOver.alphaTopLeft = 0.01;
+		btnGameOver.alphaTopRight = 0.01;
+		btnGameOver.alphaBottomLeft = 0.01;
+		btnGameOver.alphaBottomRight = 0.01;
+		container_player1_button.add(btnGameOver);
+
+		// txtGameOver
+		const txtGameOver = this.add.text(0, 0, "", {});
+		txtGameOver.setOrigin(0.5, 0.5);
+		txtGameOver.text = "Home";
+		txtGameOver.setStyle({ "color": "#ffffffff", "fontSize": "55px" });
+		container_player1_button.add(txtGameOver);
+
+		// btnGameOverPlayer1
+		const btnGameOverPlayer1 = this.add.image(-90, 0, "green_button");
+		btnGameOverPlayer1.scaleX = 0.8;
+		btnGameOverPlayer1.scaleY = 0.8;
+		container_player1_button.add(btnGameOverPlayer1);
+
+		// btnGameOverPlayer2
+		const btnGameOverPlayer2 = this.add.image(90, 0, "blue_button");
+		btnGameOverPlayer2.scaleX = -0.8;
+		btnGameOverPlayer2.scaleY = 0.8;
+		container_player1_button.add(btnGameOverPlayer2);
+
+		this.player1_background = player1_background;
+		this.player2_background = player2_background;
 		this.container_game_play = container_game_play;
+		this.txtTimer = txtTimer;
 		this.txtPlayer1ScoreCard = txtPlayer1ScoreCard;
 		this.txtPlayer2ScoreCard = txtPlayer2ScoreCard;
-		this.txtTimer = txtTimer;
+		this.player1_controller = player1_controller;
+		this.player2_controller = player2_controller;
+		this.btnMusic = btnMusic;
+		this.btnVolume = btnVolume;
+		this.btnGameQuit = btnGameQuit;
+		this.container_ball_particles = container_ball_particles;
 		this.container_gameover_popup = container_gameover_popup;
+		this.player2_scoreboard = player2_scoreboard;
+		this.player1_scoreboard = player1_scoreboard;
 		this.txtWinner = txtWinner;
-		this.btnGameOver = btnGameOver;
-		this.txtGameOver = txtGameOver;
 		this.txtPlayer1FinalScore = txtPlayer1FinalScore;
 		this.txtPlayer2FinalScore = txtPlayer2FinalScore;
+		this.container_player2_button = container_player2_button;
+		this.btnReplayGame = btnReplayGame;
+		this.txtReplayGame = txtReplayGame;
+		this.btnReplayGamePlayer1 = btnReplayGamePlayer1;
+		this.btnReplayGamePlayer2 = btnReplayGamePlayer2;
+		this.container_player1_button = container_player1_button;
+		this.btnGameOver = btnGameOver;
+		this.txtGameOver = txtGameOver;
+		this.btnGameOverPlayer1 = btnGameOverPlayer1;
+		this.btnGameOverPlayer2 = btnGameOverPlayer2;
 
 		this.events.emit("scene-awake");
 	}
 
+	/** @type {Phaser.GameObjects.Image} */
+	player1_background;
+	/** @type {Phaser.GameObjects.Image} */
+	player2_background;
 	/** @type {Phaser.GameObjects.Container} */
 	container_game_play;
+	/** @type {Phaser.GameObjects.Text} */
+	txtTimer;
 	/** @type {Phaser.GameObjects.Text} */
 	txtPlayer1ScoreCard;
 	/** @type {Phaser.GameObjects.Text} */
 	txtPlayer2ScoreCard;
-	/** @type {Phaser.GameObjects.Text} */
-	txtTimer;
+	/** @type {Phaser.GameObjects.Image} */
+	player1_controller;
+	/** @type {Phaser.GameObjects.Image} */
+	player2_controller;
+	/** @type {Phaser.GameObjects.Image} */
+	btnMusic;
+	/** @type {Phaser.GameObjects.Image} */
+	btnVolume;
+	/** @type {Phaser.GameObjects.Image} */
+	btnGameQuit;
+	/** @type {Phaser.GameObjects.Container} */
+	container_ball_particles;
 	/** @type {Phaser.GameObjects.Container} */
 	container_gameover_popup;
+	/** @type {Phaser.GameObjects.Image} */
+	player2_scoreboard;
+	/** @type {Phaser.GameObjects.Image} */
+	player1_scoreboard;
 	/** @type {Phaser.GameObjects.Text} */
 	txtWinner;
-	/** @type {Phaser.GameObjects.Image} */
-	btnGameOver;
-	/** @type {Phaser.GameObjects.Text} */
-	txtGameOver;
 	/** @type {Phaser.GameObjects.Text} */
 	txtPlayer1FinalScore;
 	/** @type {Phaser.GameObjects.Text} */
 	txtPlayer2FinalScore;
+	/** @type {Phaser.GameObjects.Container} */
+	container_player2_button;
+	/** @type {Phaser.GameObjects.Image} */
+	btnReplayGame;
+	/** @type {Phaser.GameObjects.Text} */
+	txtReplayGame;
+	/** @type {Phaser.GameObjects.Image} */
+	btnReplayGamePlayer1;
+	/** @type {Phaser.GameObjects.Image} */
+	btnReplayGamePlayer2;
+	/** @type {Phaser.GameObjects.Container} */
+	container_player1_button;
+	/** @type {Phaser.GameObjects.Image} */
+	btnGameOver;
+	/** @type {Phaser.GameObjects.Text} */
+	txtGameOver;
+	/** @type {Phaser.GameObjects.Image} */
+	btnGameOverPlayer1;
+	/** @type {Phaser.GameObjects.Image} */
+	btnGameOverPlayer2;
 
 	/* START-USER-CODE */
 
 	// Write your code here
 
 	init(data) {
-		this.soundData = data;
+		this.gameData = data;
 	}
 
 	create() {
@@ -151,8 +320,52 @@ class GamePlay extends Phaser.Scene {
 
 		this.oGameManager = new GameManager(this);
 		this.oSoundManager = new SoundManager(this);
+		this.oUiManager = new UiManager(this);
+		this.oInputManager = new InputManager(this);
+		this.oInputManager.gamePlaySceneInput();
 
-		this.oSoundManager.toggleSound(this.oSoundManager.soundArray, false);
+		if (this.gameData.player1Color !== undefined && this.gameData.player2Color !== undefined && this.gameData.gameTime !== undefined) {
+			this.oGameManager.player1Color = this.gameData.player1Color;
+			this.oGameManager.player2Color = this.gameData.player2Color;
+			this.oGameManager.gameTime = this.gameData.gameTime;
+		}
+
+		this.oUiManager.setGamePlayUi();
+		this.isGameOver = false
+		this.isTimeOver = false
+		this.isGameStart = false
+		this.isBallCollide = false
+		this.isGamePause = false
+
+		this.oSoundManager.soundPlay(this.oSoundManager.backgroundMusic, true);
+
+		// Add Game Start Timer
+		let tempTimeCounter = this.oGameManager.gameStartCounter;
+		this.txtPlayer1ScoreCard.setText(tempTimeCounter);
+		this.txtPlayer2ScoreCard.setText(tempTimeCounter);
+
+		tempTimeCounter--;
+		this.tempGameTimer = setInterval(() => {
+			this.txtPlayer1ScoreCard.setText(tempTimeCounter);
+			this.txtPlayer2ScoreCard.setText(tempTimeCounter);
+			tempTimeCounter--;
+			if (tempTimeCounter < 0) {
+				this.isGameStart = true;
+				this.oSoundManager.soundPlay(this.oSoundManager.whistleSound, false)
+
+				// Destroy Controller Image
+				this.player1_controller.destroy();
+				this.player2_controller.destroy();
+
+				clearInterval(this.tempGameTimer);
+				this.gameStart();
+			}
+			this.oSoundManager.soundPlay(this.oSoundManager.timerSound, false);
+		}, 1000)
+
+	}
+
+	gameStart() {
 
 		// set Game Data
 		this.score = {
@@ -160,11 +373,7 @@ class GamePlay extends Phaser.Scene {
 			player2Score: 0
 		}
 
-		this.isGameOver = false
-		this.isTimeOver = false
-
-		this.isBallCollide = false
-
+		this.isFirstCollide = false;
 		this.txtPlayer1ScoreCard.setText(this.score.player1Score);
 		this.txtPlayer2ScoreCard.setText(this.score.player2Score);
 
@@ -175,68 +384,94 @@ class GamePlay extends Phaser.Scene {
 		this.gameTimer(this.oGameManager.gameTime)
 		this.playerBalls();
 		this.setBall();
-		this.moveBall1();
-		this.moveBall2();
+
 		this.setGoalPost();
-
-		this.btnGameOver.setInteractive();
-		this.btnGameOver.on('pointerdown', () => {
-			this.scene.stop('GamePlay')
-			this.scene.start('Level')
-		})
-		this.btnGameOver.on('pointerover', () => {
-			this.pointerOverTween(this.btnGameOver, 0.8)
-			this.pointerOverTween(this.txtGameOver, 1)
-		})
-		this.btnGameOver.on('pointerout', () => {
-			this.pointerOutTween(this.btnGameOver, 0.8)
-			this.pointerOutTween(this.txtGameOver, 1)
-		})
-
 	}
 
 	update() {
-		if (!this.isBallCollide && !this.isGameOver) {
-			this.checkGoal();
-		}
-		if (!this.isGameOver && !this.isTimeOver) {
+		if (this.isGameStart) {
+			this.moveBall1();
+			this.moveBall2();
 
-			this.physics.collide(this.player1Ball, this.ball, () => {
-				if (Math.abs(this.player1Ball.body.velocity.x.toFixed(0)) > 200 || Math.abs(this.ball.body.velocity.x.toFixed(0)) > 200) {
-					this.ballBounceAnimation(this.player1Ball, "x")
-					this.ballBounceAnimation(this.ball, "x")
-				}
-				if (Math.abs(this.player1Ball.body.velocity.y.toFixed(0)) > 200 || Math.abs(this.ball.body.velocity.y.toFixed(0)) > 200) {
-					this.ballBounceAnimation(this.player1Ball, "y")
-					this.ballBounceAnimation(this.ball, "y")
-				}
-			})
-			this.physics.collide(this.player2Ball, this.ball, () => {
-				if (Math.abs(this.player2Ball.body.velocity.x.toFixed(0)) > 200 || Math.abs(this.ball.body.velocity.x.toFixed(0)) > 200) {
-					this.ballBounceAnimation(this.player2Ball, "x")
-					this.ballBounceAnimation(this.ball, "x")
-				}
-				if (Math.abs(this.player2Ball.body.velocity.y.toFixed(0)) > 200 || Math.abs(this.ball.body.velocity.y.toFixed(0)) > 200) {
-					this.ballBounceAnimation(this.player2Ball, "y")
-					this.ballBounceAnimation(this.ball, "y")
-				}
-			})
+			if (!this.isGameOver) {
 
-			this.physics.collide(this.player1Ball, this.player2Ball, () => {
-				if (Math.abs(this.player1Ball.body.velocity.x.toFixed(0)) > 200 || Math.abs(this.player2Ball.body.velocity.x.toFixed(0)) > 200) {
-					this.ballBounceAnimation(this.player1Ball, "x")
-					this.ballBounceAnimation(this.player2Ball, "x")
+				if (!this.isBallCollide) {
+					this.checkGoal();
 				}
-				if (Math.abs(this.player1Ball.body.velocity.y.toFixed(0)) > 200 || Math.abs(this.player2Ball.body.velocity.y.toFixed(0)) > 200) {
-					this.ballBounceAnimation(this.player1Ball, "y")
-					this.ballBounceAnimation(this.player2Ball, "y")
+
+				if (!this.isTimeOver) {
+					this.physics.collide(this.player1Ball, this.ball, () => {
+						this.isFirstCollide = true;
+						if (Math.abs(this.player1Ball.body.velocity.x.toFixed(0)) > 200 || Math.abs(this.ball.body.velocity.x.toFixed(0)) > 200) {
+							if (!this.isGameOver) {
+								if (!this.isGamePause) {
+									this.oSoundManager.soundPlay(this.oSoundManager.ballBounceSound, false);
+								}
+							}
+							this.ballBounceAnimation(this.player1Ball, "x")
+							this.ballBounceAnimation(this.ball, "x")
+						}
+						if (Math.abs(this.player1Ball.body.velocity.y.toFixed(0)) > 200 || Math.abs(this.ball.body.velocity.y.toFixed(0)) > 200) {
+							if (!this.isGameOver) {
+								if (!this.isGamePause) {
+									this.oSoundManager.soundPlay(this.oSoundManager.ballBounceSound, false);
+								}
+							}
+							this.ballBounceAnimation(this.player1Ball, "y")
+							this.ballBounceAnimation(this.ball, "y")
+						}
+					})
+					this.physics.collide(this.player2Ball, this.ball, () => {
+						this.isFirstCollide = true;
+						if (Math.abs(this.player2Ball.body.velocity.x.toFixed(0)) > 200 || Math.abs(this.ball.body.velocity.x.toFixed(0)) > 200) {
+							if (!this.isGameOver) {
+								if (!this.isGamePause) {
+									this.oSoundManager.soundPlay(this.oSoundManager.ballBounceSound, false);
+								}
+							}
+							this.ballBounceAnimation(this.player2Ball, "x")
+							this.ballBounceAnimation(this.ball, "x")
+						}
+						if (Math.abs(this.player2Ball.body.velocity.y.toFixed(0)) > 200 || Math.abs(this.ball.body.velocity.y.toFixed(0)) > 200) {
+							if (!this.isGameOver) {
+								if (!this.isGamePause) {
+									this.oSoundManager.soundPlay(this.oSoundManager.ballBounceSound, false);
+								}
+							}
+							this.ballBounceAnimation(this.player2Ball, "y")
+							this.ballBounceAnimation(this.ball, "y")
+						}
+					})
+
+					this.physics.collide(this.player1Ball, this.player2Ball, () => {
+						if (Math.abs(this.player1Ball.body.velocity.x.toFixed(0)) > 200 || Math.abs(this.player2Ball.body.velocity.x.toFixed(0)) > 200) {
+							this.ballBounceAnimation(this.player1Ball, "x")
+							this.ballBounceAnimation(this.player2Ball, "x")
+						}
+						if (Math.abs(this.player1Ball.body.velocity.y.toFixed(0)) > 200 || Math.abs(this.player2Ball.body.velocity.y.toFixed(0)) > 200) {
+							this.ballBounceAnimation(this.player1Ball, "y")
+							this.ballBounceAnimation(this.player2Ball, "y")
+						}
+					})
+
+					if ((Math.abs(this.ball.body.velocity.x > 700) || Math.abs(this.ball.body.velocity.y > 700)) && this.isFirstCollide) {
+						// if ((Math.abs(this.ball.body.velocity.x > 100) || Math.abs(this.ball.body.velocity.y > 100)) && this.isFirstCollide) {
+						this.ballParticle();
+					}
+					else {
+						if (this.ballParticles !== undefined) {
+							this.ballParticles.destroy();
+							this.emitter.stop();
+						}
+					}
 				}
-			})
+			}
 		}
 	}
 
 	playerBalls() {
-		this.player1Ball = this.physics.add.image(this.oGameManager.ballInfo.player1Ball.x, this.oGameManager.ballInfo.player1Ball.y, "purple_ball").setCircle(52, 0, 0).setCollideWorldBounds(true);
+		let tempPlayer1BallColor = this.oGameManager.player1Color + "_ball";
+		this.player1Ball = this.physics.add.image(this.oGameManager.ballInfo.player1Ball.x, this.oGameManager.ballInfo.player1Ball.y, tempPlayer1BallColor).setCircle(52, 0, 0).setCollideWorldBounds(true);
 		this.player1Ball.setImmovable(false);
 		this.player1Ball.setScale(this.oGameManager.ballInfo.player1Ball.scale)
 		this.player1Ball.setBounce(this.oGameManager.ballInfo.player1Ball.bounce);
@@ -259,8 +494,9 @@ class GamePlay extends Phaser.Scene {
 				}
 			}
 		});
-		
-		this.player2Ball = this.physics.add.image(this.oGameManager.ballInfo.player2Ball.x, this.oGameManager.ballInfo.player2Ball.y, "orange_ball").setCircle(52, 0, 0).setCollideWorldBounds(true);
+
+		let tempPlayer2BallColor = this.oGameManager.player2Color + "_ball";
+		this.player2Ball = this.physics.add.image(this.oGameManager.ballInfo.player2Ball.x, this.oGameManager.ballInfo.player2Ball.y, tempPlayer2BallColor).setCircle(52, 0, 0).setCollideWorldBounds(true);
 		this.player2Ball.setImmovable(false)
 		this.player2Ball.setScale(this.oGameManager.ballInfo.player2Ball.scale)
 		this.player2Ball.setBounce(this.oGameManager.ballInfo.player2Ball.bounce);
@@ -288,7 +524,7 @@ class GamePlay extends Phaser.Scene {
 	}
 
 	setBall() {
-		this.ball = this.physics.add.image(this.oGameManager.ballInfo.mainBall.x, this.oGameManager.ballInfo.mainBall.y, "green_ball").setCircle(30, 2, 2).setCollideWorldBounds(true);
+		this.ball = this.physics.add.image(this.oGameManager.ballInfo.mainBall.x, this.oGameManager.ballInfo.mainBall.y, "game_ball").setCircle(30, 2, 2).setCollideWorldBounds(true);
 		this.ball.setImmovable(false)
 		this.ball.setScale(this.oGameManager.ballInfo.mainBall.scale)
 		this.ball.setBounce(this.oGameManager.ballInfo.mainBall.bounce);
@@ -296,12 +532,19 @@ class GamePlay extends Phaser.Scene {
 		this.ball.setMaxVelocity(this.oGameManager.ballInfo.mainBall.maxVelocity);
 		this.container_game_play.add(this.ball)
 
+		this.container_ball_particles.setVisible(true);
+
 		this.ball.body.onWorldBounds = true;
 		this.physics.world.on('worldbounds', (body, up, down, left, right) => {
 			if (body.gameObject === this.ball) {
 				if (Math.abs(this.ball.body.velocity.y.toFixed(0)) > 200) {
 					if (down || up) {
 						// ball bounce sound
+						if (!this.isGameOver) {
+							if (!this.isGamePause) {
+								this.oSoundManager.soundPlay(this.oSoundManager.ballBounceSound, false);
+							}
+						}
 						this.ballBounceAnimation(this.ball, "y")
 					}
 				}
@@ -423,19 +666,26 @@ class GamePlay extends Phaser.Scene {
 		this.player2GoalPost.body.setImmovable(true);
 		this.player2GoalPost.body.setAllowGravity(false);
 		this.container_game_play.add(this.player2GoalPost)
-
 	}
 
 	checkGoal() {
 		this.physics.collide(this.player1GoalPost, this.ball, () => {
+			if (!this.isGameOver) {
+				this.oSoundManager.soundPlay(this.oSoundManager.goalSound, false);
+			}
 			this.isBallCollide = true
+			this.isFirstCollide = false;
 			this.score.player1Score += 1
 			this.txtPlayer1ScoreCard.setText(this.score.player1Score);
 			this.setGoalAnimation(this.ball.x, this.ball.y, 'right');
 			this.checkGameStatus();
 		})
 		this.physics.collide(this.player2GoalPost, this.ball, () => {
+			if (!this.isGameOver) {
+				this.oSoundManager.soundPlay(this.oSoundManager.goalSound, false);
+			}
 			this.isBallCollide = true
+			this.isFirstCollide = false;
 			this.score.player2Score += 1
 			this.txtPlayer2ScoreCard.setText(this.score.player2Score);
 			this.setGoalAnimation(this.ball.x, this.ball.y, 'left')
@@ -455,7 +705,9 @@ class GamePlay extends Phaser.Scene {
 				break;
 		}
 
-		let tempBall = this.add.image(ballX, ballY, "green_ball").setScale(this.oGameManager.ballInfo.mainBall.scale);
+		this.container_ball_particles.setVisible(false);
+
+		let tempBall = this.add.image(ballX, ballY, "game_ball").setScale(this.oGameManager.ballInfo.mainBall.scale);
 		this.container_game_play.add(tempBall);
 
 		this.tweens.add({
@@ -471,7 +723,31 @@ class GamePlay extends Phaser.Scene {
 		})
 	}
 
+	ballParticle() {
+		this.ballParticles = this.add.particles('ballParticleImage');
+		this.container_ball_particles.add(this.ballParticles);
+		// Create the firework emitter
+		this.emitter = this.ballParticles.createEmitter({
+			x: this.ball.x,
+			y: this.ball.y,
+			// speed: { min: -10, max: 10 },
+			angle: { min: 0, max: 360 },
+			scale: { start: 0.8, end: 0 },
+			frequency: 1,
+			lifespan: 250,
+		});
+		this.emitter.startFollow(this.ball)
+		this.emitter.stop();
+
+		// Position the this.emitter where you want the firework to explode
+		this.emitter.setPosition(this.ball.x, this.ball.y);
+		// Explode once
+		this.emitter.explode(100, this.ball.x, this.ball.y);
+	}
+
 	ballDestroy() {
+
+		this.isGamePause = true;
 
 		this.ball.setVisible(false);
 		this.player1Ball.setVisible(false);
@@ -485,23 +761,25 @@ class GamePlay extends Phaser.Scene {
 		if (!this.isTimeOver) {
 
 			// display temp ball
-			this.tempOwnBall = this.add.image(this.oGameManager.ballInfo.player1Ball.x, this.oGameManager.ballInfo.player1Ball.y, "purple_ball").setScale(this.oGameManager.ballInfo.player1Ball.scale)
-			this.tempOppoBall = this.add.image(this.oGameManager.ballInfo.player2Ball.x, this.oGameManager.ballInfo.player2Ball.y, "orange_ball").setScale(this.oGameManager.ballInfo.player2Ball.scale)
-			this.tempMainBall = this.add.image(this.oGameManager.ballInfo.mainBall.x, this.oGameManager.ballInfo.mainBall.y, "green_ball").setScale(this.oGameManager.ballInfo.mainBall.scale)
+			let tempPlayer1BallColor = this.oGameManager.player1Color + "_ball";
+			let tempPlayer2BallColor = this.oGameManager.player2Color + "_ball";
 
-			let timeInterval = setInterval(() => {
+			this.tempOwnBall = this.add.image(this.oGameManager.ballInfo.player1Ball.x, this.oGameManager.ballInfo.player1Ball.y, tempPlayer1BallColor).setScale(this.oGameManager.ballInfo.player1Ball.scale)
+			this.tempOppoBall = this.add.image(this.oGameManager.ballInfo.player2Ball.x, this.oGameManager.ballInfo.player2Ball.y, tempPlayer2BallColor).setScale(this.oGameManager.ballInfo.player2Ball.scale)
+			this.tempMainBall = this.add.image(this.oGameManager.ballInfo.mainBall.x, this.oGameManager.ballInfo.mainBall.y, "game_ball").setScale(this.oGameManager.ballInfo.mainBall.scale)
+
+			this.timeInterval1 = setInterval(() => {
 				this.txtPlayer1ScoreCard.setText(tempTime);
 				this.txtPlayer2ScoreCard.setText(tempTime);
 				tempTime--
 
 				if (tempTime < 0) {
-					clearTimeout(timeInterval);
+					clearInterval(this.timeInterval1);
+					this.isGamePause = false;
 					// set Score
 					this.txtPlayer1ScoreCard.setText(this.score.player1Score);
 					this.txtPlayer2ScoreCard.setText(this.score.player2Score);
-
-					// new round whistle sound
-					// this.oSoundManager.soundPlay(this.oSoundManager.whistleSound, false);
+					this.oSoundManager.soundPlay(this.oSoundManager.whistleSound, false);
 
 					// set New Body
 					this.ball.destroy();
@@ -515,9 +793,9 @@ class GamePlay extends Phaser.Scene {
 					this.tempOppoBall.destroy();
 					this.tempMainBall.destroy();
 
-					this.isBallCollide = false
+					this.isBallCollide = false;
 				}
-
+				this.oSoundManager.soundPlay(this.oSoundManager.timerSound, false);
 			}, 1000);
 		}
 	}
@@ -567,6 +845,12 @@ class GamePlay extends Phaser.Scene {
 	gameOver() {
 		this.isGameOver = true;
 
+		this.oSoundManager.toggleMute(this.oSoundManager.ballBounceSound, true);
+		this.oSoundManager.toggleMute(this.oSoundManager.timerSound, true);
+		this.oSoundManager.toggleMute(this.oSoundManager.whistleSound, true);
+
+		this.oSoundManager.soundPlay(this.oSoundManager.winnerSound, false);
+
 		if (this.tempMainBall !== undefined && this.tempOppoBall !== undefined && this.tempOwnBall !== undefined) {
 			this.tempOwnBall.setVisible(false)
 			this.tempOppoBall.setVisible(false)
@@ -590,24 +874,6 @@ class GamePlay extends Phaser.Scene {
 		}
 
 	}
-
-	pointerOverTween(btn, initSclae) {
-		this.tweens.add({
-			targets: btn,
-			scaleX: initSclae + 0.05,
-			scaleY: initSclae + 0.05,
-			duration: 100
-		})
-	}
-	pointerOutTween(btn, initSclae) {
-		this.tweens.add({
-			targets: btn,
-			scaleX: initSclae,
-			scaleY: initSclae,
-			duration: 100
-		})
-	}
-
 
 	/* END-USER-CODE */
 }

@@ -13,17 +13,6 @@
     },
     "displayList": [
         {
-            "type": "Image",
-            "id": "68985b8c-e931-49ef-98e4-c38fc6573f36",
-            "label": "splash_background",
-            "components": [],
-            "texture": {
-                "key": "splash_background"
-            },
-            "x": 960,
-            "y": 540
-        },
-        {
             "type": "Text",
             "id": "2ce42443-5227-4c9b-b498-e81f9a21cde3",
             "label": "progress",
@@ -40,14 +29,100 @@
         },
         {
             "type": "Image",
-            "id": "968f88c3-5eb8-47af-9747-229b094093ff",
-            "label": "logo",
+            "id": "daeaeb5f-a6f0-485c-a6f3-81449380efa0",
+            "label": "player1_background_preload",
+            "scope": "CLASS",
             "components": [],
             "texture": {
-                "key": "logo"
+                "key": "green_splash"
             },
+            "x": 196,
+            "y": 599,
+            "scaleX": -1
+        },
+        {
+            "type": "Image",
+            "id": "d4b22d6a-01a4-4f9e-81c4-103597939664",
+            "label": "player2_background_preload",
+            "scope": "CLASS",
+            "components": [],
+            "texture": {
+                "key": "blue_splash"
+            },
+            "x": 1724,
+            "y": 599
+        },
+        {
+            "type": "Container",
+            "id": "6f71788a-2728-443f-9aa9-36748a0baf71",
+            "label": "container_preload_scene_logo",
+            "scope": "CLASS",
+            "components": [],
             "x": 960,
-            "y": 234
+            "y": 234,
+            "list": [
+                {
+                    "type": "Image",
+                    "id": "92de92bd-50b1-4497-aadd-d1fef690b425",
+                    "label": "player2_border_preload",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "blue_border"
+                    },
+                    "x": 106,
+                    "y": -24,
+                    "scaleX": -1
+                },
+                {
+                    "type": "Image",
+                    "id": "a82e1f63-8271-42e0-8bfe-f7ac5c29a456",
+                    "label": "player1_border_preload",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "green_border"
+                    },
+                    "x": -106,
+                    "y": -25
+                },
+                {
+                    "type": "Image",
+                    "id": "f84e8ad2-1172-49b3-a662-2e2482a50b19",
+                    "label": "txt_colour_preload",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "green_colour_text"
+                    },
+                    "y": -31
+                },
+                {
+                    "type": "Image",
+                    "id": "b0499c75-9764-475c-99d0-50f8cb701713",
+                    "label": "txt_battle_preload",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "blue_battle_text"
+                    },
+                    "x": -2,
+                    "y": 55
+                },
+                {
+                    "type": "Image",
+                    "id": "fa658c11-d7f4-4d3b-8293-1b293dabff48",
+                    "label": "blue_dot",
+                    "components": [],
+                    "texture": {
+                        "key": "game_ball"
+                    },
+                    "x": 1,
+                    "y": -101,
+                    "scaleX": 0.65,
+                    "scaleY": 0.65
+                }
+            ]
         }
     ],
     "plainObjects": [],
