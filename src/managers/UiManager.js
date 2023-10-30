@@ -256,6 +256,7 @@ class UiManager {
                 this.oScene.btnReplayGamePlayer1.setTexture('purple_button');
                 this.oScene.txtPlayer1ScoreCard.setStyle({ "color": "#C000FF" });
                 this.oScene.txtPlayer1FinalScore.setStyle({ "color": "#C000FF" });
+                this.oScene.txt_player1_info.setStyle({ "color": "#C000FF" });
                 break;
             case "orange":
                 this.oScene.player1_background.setTexture('orange_background');
@@ -265,6 +266,7 @@ class UiManager {
                 this.oScene.btnReplayGamePlayer1.setTexture('orange_button');
                 this.oScene.txtPlayer1ScoreCard.setStyle({ "color": "#FF8900" });
                 this.oScene.txtPlayer1FinalScore.setStyle({ "color": "#FF8900" });
+                this.oScene.txt_player1_info.setStyle({ "color": "#FF8900" });
                 break;
             case "red":
                 this.oScene.player1_background.setTexture('red_background');
@@ -274,6 +276,7 @@ class UiManager {
                 this.oScene.btnReplayGamePlayer1.setTexture('red_button');
                 this.oScene.txtPlayer1ScoreCard.setStyle({ "color": "#F3023F" });
                 this.oScene.txtPlayer1FinalScore.setStyle({ "color": "#F3023F" });
+                this.oScene.txt_player1_info.setStyle({ "color": "#F3023F" });
                 break;
             case "blue":
                 this.oScene.player1_background.setTexture('blue_background');
@@ -283,6 +286,7 @@ class UiManager {
                 this.oScene.btnReplayGamePlayer1.setTexture('blue_button');
                 this.oScene.txtPlayer1ScoreCard.setStyle({ "color": "#3E00FC" });
                 this.oScene.txtPlayer1FinalScore.setStyle({ "color": "#3E00FC" });
+                this.oScene.txt_player1_info.setStyle({ "color": "#3E00FC" });
                 break;
             case "yellow":
                 this.oScene.player1_background.setTexture('yellow_background');
@@ -292,6 +296,7 @@ class UiManager {
                 this.oScene.btnReplayGamePlayer1.setTexture('yellow_button');
                 this.oScene.txtPlayer1ScoreCard.setStyle({ "color": "#F6FF00" });
                 this.oScene.txtPlayer1FinalScore.setStyle({ "color": "#F6FF00" });
+                this.oScene.txt_player1_info.setStyle({ "color": "#F6FF00" });
                 break;
             case "green":
                 this.oScene.player1_background.setTexture('green_background');
@@ -301,6 +306,7 @@ class UiManager {
                 this.oScene.btnReplayGamePlayer1.setTexture('green_button');
                 this.oScene.txtPlayer1ScoreCard.setStyle({ "color": "#62FF00" });
                 this.oScene.txtPlayer1FinalScore.setStyle({ "color": "#62FF00" });
+                this.oScene.txt_player1_info.setStyle({ "color": "#62FF00" });
                 break;
             default:
                 break;
@@ -316,6 +322,7 @@ class UiManager {
                 this.oScene.btnReplayGamePlayer2.setTexture('purple_button');
                 this.oScene.txtPlayer2ScoreCard.setStyle({ "color": "#C000FF" });
                 this.oScene.txtPlayer2FinalScore.setStyle({ "color": "#C000FF" });
+                this.oScene.txt_player2_info.setStyle({ "color": "#C000FF" });
                 break;
             case "orange":
                 this.oScene.player2_background.setTexture('orange_background');
@@ -325,6 +332,7 @@ class UiManager {
                 this.oScene.btnReplayGamePlayer2.setTexture('orange_button');
                 this.oScene.txtPlayer2ScoreCard.setStyle({ "color": "#FF8900" });
                 this.oScene.txtPlayer2FinalScore.setStyle({ "color": "#FF8900" });
+                this.oScene.txt_player2_info.setStyle({ "color": "#FF8900" });
                 break;
             case "red":
                 this.oScene.player2_background.setTexture('red_background');
@@ -334,6 +342,7 @@ class UiManager {
                 this.oScene.btnReplayGamePlayer2.setTexture('red_button');
                 this.oScene.txtPlayer2ScoreCard.setStyle({ "color": "#F3023F" });
                 this.oScene.txtPlayer2FinalScore.setStyle({ "color": "#F3023F" });
+                this.oScene.txt_player2_info.setStyle({ "color": "#F3023F" });
                 break;
             case "blue":
                 this.oScene.player2_background.setTexture('blue_background');
@@ -343,6 +352,7 @@ class UiManager {
                 this.oScene.btnReplayGamePlayer2.setTexture('blue_button');
                 this.oScene.txtPlayer2ScoreCard.setStyle({ "color": "#3E00FC" });
                 this.oScene.txtPlayer2FinalScore.setStyle({ "color": "#3E00FC" });
+                this.oScene.txt_player2_info.setStyle({ "color": "#3E00FC" });
                 break;
             case "yellow":
                 this.oScene.player2_background.setTexture('yellow_background');
@@ -352,6 +362,7 @@ class UiManager {
                 this.oScene.btnReplayGamePlayer2.setTexture('yellow_button');
                 this.oScene.txtPlayer2ScoreCard.setStyle({ "color": "#F6FF00" });
                 this.oScene.txtPlayer2FinalScore.setStyle({ "color": "#F6FF00" });
+                this.oScene.txt_player2_info.setStyle({ "color": "#F6FF00" });
                 break;
             case "green":
                 this.oScene.player2_background.setTexture('green_background');
@@ -361,6 +372,7 @@ class UiManager {
                 this.oScene.btnReplayGamePlayer2.setTexture('green_button');
                 this.oScene.txtPlayer2ScoreCard.setStyle({ "color": "#62FF00" });
                 this.oScene.txtPlayer2FinalScore.setStyle({ "color": "#62FF00" });
+                this.oScene.txt_player2_info.setStyle({ "color": "#62FF00" });
                 break;
             default:
                 break;

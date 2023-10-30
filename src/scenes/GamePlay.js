@@ -27,7 +27,7 @@ class GamePlay extends Phaser.Scene {
 		const container_game_play = this.add.container(0, 0);
 
 		// stick
-		const stick = this.add.image(960, 540, "stick");
+		const stick = this.add.image(959.5, 539.5, "stick");
 		container_game_play.add(stick);
 
 		// txtTimer
@@ -66,6 +66,10 @@ class GamePlay extends Phaser.Scene {
 		const player2_controller = this.add.image(1520, 495, "blue_controller_arrows");
 		container_game_play.add(player2_controller);
 
+		// intial_game_ball
+		const intial_game_ball = this.add.image(960, 540, "game_ball");
+		container_game_play.add(intial_game_ball);
+
 		// btnMusic
 		const btnMusic = this.add.image(210, 117, "music");
 		btnMusic.scaleX = 0.8;
@@ -84,6 +88,20 @@ class GamePlay extends Phaser.Scene {
 		btnGameQuit.scaleY = 0.8;
 		btnGameQuit.angle = 45;
 		container_game_play.add(btnGameQuit);
+
+		// txt_player1_info
+		const txt_player1_info = this.add.text(406, 854, "", {});
+		txt_player1_info.setOrigin(0.5, 0.5);
+		txt_player1_info.text = "Prees any WASD key to Begin";
+		txt_player1_info.setStyle({ "fontSize": "30px" });
+		container_game_play.add(txt_player1_info);
+
+		// txt_player2_info
+		const txt_player2_info = this.add.text(1520, 854, "", {});
+		txt_player2_info.setOrigin(0.5, 0.5);
+		txt_player2_info.text = "Prees any Arrow key to Begin";
+		txt_player2_info.setStyle({ "fontSize": "30px" });
+		container_game_play.add(txt_player2_info);
 
 		// container_ball_particles
 		const container_ball_particles = this.add.container(0, 0);
@@ -225,9 +243,12 @@ class GamePlay extends Phaser.Scene {
 		this.txtPlayer2ScoreCard = txtPlayer2ScoreCard;
 		this.player1_controller = player1_controller;
 		this.player2_controller = player2_controller;
+		this.intial_game_ball = intial_game_ball;
 		this.btnMusic = btnMusic;
 		this.btnVolume = btnVolume;
 		this.btnGameQuit = btnGameQuit;
+		this.txt_player1_info = txt_player1_info;
+		this.txt_player2_info = txt_player2_info;
 		this.container_ball_particles = container_ball_particles;
 		this.container_gameover_popup = container_gameover_popup;
 		this.player2_scoreboard = player2_scoreboard;
@@ -266,11 +287,17 @@ class GamePlay extends Phaser.Scene {
 	/** @type {Phaser.GameObjects.Image} */
 	player2_controller;
 	/** @type {Phaser.GameObjects.Image} */
+	intial_game_ball;
+	/** @type {Phaser.GameObjects.Image} */
 	btnMusic;
 	/** @type {Phaser.GameObjects.Image} */
 	btnVolume;
 	/** @type {Phaser.GameObjects.Image} */
 	btnGameQuit;
+	/** @type {Phaser.GameObjects.Text} */
+	txt_player1_info;
+	/** @type {Phaser.GameObjects.Text} */
+	txt_player2_info;
 	/** @type {Phaser.GameObjects.Container} */
 	container_ball_particles;
 	/** @type {Phaser.GameObjects.Container} */
@@ -336,32 +363,91 @@ class GamePlay extends Phaser.Scene {
 		this.isGameStart = false
 		this.isBallCollide = false
 		this.isGamePause = false
+		this.isPlayer1Ready = false
+		this.isPlayer2Ready = false
 
 		this.oSoundManager.soundPlay(this.oSoundManager.backgroundMusic, true);
 
-		// Add Game Start Timer
-		let tempTimeCounter = this.oGameManager.gameStartCounter;
-		this.txtPlayer1ScoreCard.setText(tempTimeCounter);
-		this.txtPlayer2ScoreCard.setText(tempTimeCounter);
+		this.input.keyboard.on('keydown', (event) => {
+			if (!this.isPlayer1Ready) {
+				switch (event.code) {
+					case 'KeyA':
+						this.txt_player1_info.setVisible(false);
+						this.isPlayer1Ready = true;
+						this.playerReady();
+						break;
+					case 'KeyD':
+						this.txt_player1_info.setVisible(false);
+						this.isPlayer1Ready = true;
+						this.playerReady();
+						break;
+					case 'KeyW':
+						this.txt_player1_info.setVisible(false);
+						this.isPlayer1Ready = true;
+						this.playerReady();
+						break;
+					case 'KeyS':
+						this.txt_player1_info.setVisible(false);
+						this.isPlayer1Ready = true;
+						this.playerReady();
+						break;
+				}
+			}
+			if (!this.isPlayer2Ready) {
+				switch (event.code) {
+					case 'ArrowLeft':
+						this.txt_player2_info.setVisible(false);
+						this.isPlayer2Ready = true;
+						this.playerReady();
+						break;
+					case 'ArrowRight':
+						this.txt_player2_info.setVisible(false);
+						this.isPlayer2Ready = true;
+						this.playerReady();
+						break;
+					case 'ArrowUp':
+						this.txt_player2_info.setVisible(false);
+						this.isPlayer2Ready = true;
+						this.playerReady();
+						break;
+					case 'ArrowDown':
+						this.txt_player2_info.setVisible(false);
+						this.isPlayer2Ready = true;
+						this.playerReady();
+						break;
+				}
+			}
+		})
 
-		tempTimeCounter--;
-		this.tempGameTimer = setInterval(() => {
+	}
+
+	playerReady() {
+		if (this.isPlayer1Ready && this.isPlayer2Ready) {
+			// Add Game Start Timer
+			let tempTimeCounter = this.oGameManager.gameStartCounter;
 			this.txtPlayer1ScoreCard.setText(tempTimeCounter);
 			this.txtPlayer2ScoreCard.setText(tempTimeCounter);
+
 			tempTimeCounter--;
-			if (tempTimeCounter < 0) {
-				this.isGameStart = true;
-				this.oSoundManager.soundPlay(this.oSoundManager.whistleSound, false)
+			this.tempGameTimer = setInterval(() => {
+				this.txtPlayer1ScoreCard.setText(tempTimeCounter);
+				this.txtPlayer2ScoreCard.setText(tempTimeCounter);
+				tempTimeCounter--;
+				if (tempTimeCounter < -1) {
+					this.isGameStart = true;
+					this.oSoundManager.soundPlay(this.oSoundManager.whistleSound, false)
 
-				// Destroy Controller Image
-				this.player1_controller.destroy();
-				this.player2_controller.destroy();
+					// Destroy Controller Image
+					this.intial_game_ball.destroy();
+					this.player1_controller.destroy();
+					this.player2_controller.destroy();
 
-				clearInterval(this.tempGameTimer);
-				this.gameStart();
-			}
-			this.oSoundManager.soundPlay(this.oSoundManager.timerSound, false);
-		}, 1000)
+					clearInterval(this.tempGameTimer);
+					this.gameStart();
+				}
+				this.oSoundManager.soundPlay(this.oSoundManager.timerSound, false);
+			}, 1000)
+		}
 
 	}
 
@@ -460,7 +546,9 @@ class GamePlay extends Phaser.Scene {
 					}
 					else {
 						if (this.ballParticles !== undefined) {
-							this.ballParticles.destroy();
+							this.container_ball_particles.getAll().forEach(items => {
+								items.destroy();
+							})
 							this.emitter.stop();
 						}
 					}
@@ -752,7 +840,7 @@ class GamePlay extends Phaser.Scene {
 		this.ball.setVisible(false);
 		this.player1Ball.setVisible(false);
 		this.player2Ball.setVisible(false);
-		let tempTime = 2
+		let tempTime = 3
 
 		// set time at score card
 		this.txtPlayer1ScoreCard.setText(tempTime);
@@ -773,7 +861,7 @@ class GamePlay extends Phaser.Scene {
 				this.txtPlayer2ScoreCard.setText(tempTime);
 				tempTime--
 
-				if (tempTime < 0) {
+				if (tempTime < -1) {
 					clearInterval(this.timeInterval1);
 					this.isGamePause = false;
 					// set Score
@@ -864,14 +952,51 @@ class GamePlay extends Phaser.Scene {
 		this.txtPlayer2FinalScore.setText(this.score.player2Score);
 
 		if (this.score.player1Score > this.score.player2Score) {
+			this.addConfetti('player1');
 			this.txtWinner.setText('Player 1 was victorious!')
 		}
 		else if (this.score.player1Score < this.score.player2Score) {
+			this.addConfetti('player2');
 			this.txtWinner.setText('Player 2 was victorious!')
 		}
 		else {
 			this.txtWinner.setText('Game Tie !')
 		}
+
+	}
+
+	addConfetti(player) {
+
+		let end = Date.now() + (10 * 100);
+
+		// go Buckeyes!
+		let colors = [this.oGameManager.player1Color, this.oGameManager.player2Color];
+
+		(function frame() {
+			confetti({
+				particleCount: 2,
+				angle: player === 'player1' ? 60 : 120,
+				spread: 70,
+				origin: { x: player === 'player1' ? 0 : 1 },
+				shapes: ["image"],
+				shapeOptions: {
+					image: [{
+						src: `./assets/images/game-play/${colors[0]}/${colors[0]}_ball.png`,
+						width: 32,
+						height: 32,
+					},
+					{
+						src: `./assets/images/game-play/${colors[1]}/${colors[1]}_ball.png`,
+						width: 32,
+						height: 32,
+					}],
+				},
+			});
+
+			if (Date.now() < end) {
+				requestAnimationFrame(frame);
+			}
+		}());
 
 	}
 

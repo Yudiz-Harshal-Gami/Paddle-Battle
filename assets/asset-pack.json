@@ -73,16 +73,6 @@
                 "key": "cross"
             },
             {
-                "url": "assets/images/game-play/game_background.png",
-                "type": "image",
-                "key": "game_background"
-            },
-            {
-                "url": "assets/images/game-over/gameover_box.png",
-                "type": "image",
-                "key": "gameover_box"
-            },
-            {
                 "url": "assets/images/game-over/gameover_text.png",
                 "type": "image",
                 "key": "gameover_text"

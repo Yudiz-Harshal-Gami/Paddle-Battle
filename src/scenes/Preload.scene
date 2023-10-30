@@ -24,6 +24,7 @@
             "y": 740,
             "originX": 0.5,
             "originY": 0.5,
+            "visible": false,
             "text": "0%",
             "fontSize": "60px"
         },

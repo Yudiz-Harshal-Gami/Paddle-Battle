@@ -25,6 +25,7 @@ class Preload extends Phaser.Scene {
 		// progress
 		const progress = this.add.text(960, 740, "", {});
 		progress.setOrigin(0.5, 0.5);
+		progress.visible = false;
 		progress.text = "0%";
 		progress.setStyle({ "fontSize": "60px" });
 
@@ -129,6 +130,7 @@ class Preload extends Phaser.Scene {
 		const progressIncrement = 1 / numIntervals;
 
 		const updateProgressBar = () => {
+			this.progress.setVisible(true);
 			const currentProgress = currentInterval * progressIncrement;
 
 			this.progress.setText(currentInterval + '%')

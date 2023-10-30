@@ -49,8 +49,8 @@
                     "texture": {
                         "key": "stick"
                     },
-                    "x": 960,
-                    "y": 540
+                    "x": 959.5,
+                    "y": 539.5
                 },
                 {
                     "type": "Text",
@@ -126,6 +126,18 @@
                 },
                 {
                     "type": "Image",
+                    "id": "7a483a80-dd74-4fa4-bfd7-0797c380644d",
+                    "label": "intial_game_ball",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "game_ball"
+                    },
+                    "x": 960,
+                    "y": 540
+                },
+                {
+                    "type": "Image",
                     "id": "156dbd6e-c4eb-49ce-86ef-32b6bc310ec2",
                     "label": "btnMusic",
                     "scope": "CLASS",
@@ -166,6 +178,32 @@
                     "scaleX": 0.8,
                     "scaleY": 0.8,
                     "angle": 45
+                },
+                {
+                    "type": "Text",
+                    "id": "bf5dfbf9-f416-451a-a63a-b9702857eda0",
+                    "label": "txt_player1_info",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": 406,
+                    "y": 854,
+                    "originX": 0.5,
+                    "originY": 0.5,
+                    "text": "Prees any WASD key to Begin",
+                    "fontSize": "30px"
+                },
+                {
+                    "type": "Text",
+                    "id": "5d41b237-3b13-4af6-8233-86075eeb0263",
+                    "label": "txt_player2_info",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": 1520,
+                    "y": 854,
+                    "originX": 0.5,
+                    "originY": 0.5,
+                    "text": "Prees any Arrow key to Begin",
+                    "fontSize": "30px"
                 },
                 {
                     "type": "Container",
