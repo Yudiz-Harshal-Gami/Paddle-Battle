@@ -1,4 +1,4 @@
-class UiManager {
+export default class UiManager {
     constructor(scene) {
         this.oScene = scene;
     }

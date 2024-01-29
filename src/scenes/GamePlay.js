@@ -1,9 +1,13 @@
 
 // You can write more code here
-
+import Phaser from "phaser";
+import GameManager from "../managers/GameManager";
+import InputManager from "../managers/InputManager";
+import SoundManager from "../managers/SoundManager";
+import UiManager from "../managers/UiManager";
 /* START OF COMPILED CODE */
 
-class GamePlay extends Phaser.Scene {
+export default class GamePlay extends Phaser.Scene {
 
 	constructor() {
 		super("GamePlay");

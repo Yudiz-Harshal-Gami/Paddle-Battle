@@ -1,4 +1,4 @@
-class GameManager {
+export default class GameManager {
     constructor(scene) {
         this.scene = scene;
         this.gameTime = 120 // in second

@@ -1,4 +1,4 @@
-class SoundManager {
+export default class SoundManager {
     constructor(scene) {
         this.scene = scene;
 
